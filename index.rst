@@ -8,9 +8,10 @@ The first devices that support Android Wear are the Moto 360 and LG G watches, w
 
 Initially, you need to become familiar with the UI core functions, Suggest and Demand.
 
+Contents:
+
 .. toctree::
    :maxdepth: 2
-   :hidden:
 
    suggest.rst
    demand.rst

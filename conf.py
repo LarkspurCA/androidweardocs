@@ -43,7 +43,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'androidweardocs'
+project = u'Android Wear Docs'
 copyright = u'2014, Michael Hahn'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -196,7 +196,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'androidweardocs.tex', u'androidweardocs Documentation',
+  ('index', 'androidweardocs.tex', u'Android Wear Docs',
    u'Michael Hahn', 'manual'),
 ]
 
