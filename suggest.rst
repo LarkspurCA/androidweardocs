@@ -6,8 +6,6 @@ Android Wear Suggest
 The Suggest context stream is one of the core functions for Android Wear. It consists of a sequence of displays about timely information, such as incoming messages. 
 
  .. figure:: images/suggest.png
-    :height: 320
-    :width: 343
     :scale: 40
     :align: right
 
