@@ -8,12 +8,20 @@ The first devices that support Android Wear are the Moto 360 and LG G watches, w
 
 If you are new to Android Wear you first need to learn how a wearable app works, then you can move on to developing your own custom app.
 
+Contents:
+
 .. toctree::
    :maxdepth: 2
-   :hidden:
 
    explore.rst
    suggest.rst
    demand.rst
    contact.rst
 
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
