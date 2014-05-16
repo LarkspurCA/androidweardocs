@@ -1,10 +1,7 @@
-********************
 Contact Us
-********************
+==========
 
-Android Ware Docs
-
-Larkspur, CA
+Android Ware Docs, Larkspur, CA
  
 415 924-7733
 
