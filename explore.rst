@@ -13,13 +13,27 @@ To try out the Android Wear Preview, perform the following tasks:
 
 * Install the `Android Studio Preview <http://developer.android.com/sdk/installing/studio.html>`_.
 
-  To try out the preview app, you anly need the Android Tools. However it is much easier to install a full IDE than indivicual components. You can use either Eclipse or Android Studio as your IDE, but I recommend Android Studio because Google uses it now and the sample applications are Studio projects.
+  To try out the preview app, you only need the Android Tools. However it is much easier to install a full IDE than individual components. You can use either Eclipse or Android Studio as your IDE, but I recommend Android Studio because the sample applications are Studio projects.
 
-* Set up an Android Wear emulator. See `Android Wear Developer Preview <http://developer.android.com/wear/preview/start.html>`_ for the necessary procedures:
+* Install the Android Wear system image using the Android SDK Manager. 
 
-  * Install the Android Wear system image using the SDK Manager.
 
-  * Set up and start an Android Wear emulator using the AVD Manager.
+   * Android SDK Tools revision 22.6 or later
+   * Android Wear ARM EABI v7a System Image
+   * Android Support Library
+   * Android Support Repository
+
+* Set up an Android Wear emulator using the Android AVD Manager.
+
+  .. figure:: images/android-wear-square-vm.png
+    :scale: 35 %
+
+* Start the emulator.
+
+  Initially the screen shows only the time and a disconnected phone icon.
+
+  .. figure:: images/android-wear-square-blank.png
+    :scale: 35 %
 
 * Install the Android Wear Preview app on your smartphone.
 
@@ -28,16 +42,27 @@ To try out the Android Wear Preview, perform the following tasks:
 
 * Connect your smartphone to the computer with a USB cable.
 
-* Launch the app and click Connect to link to the emulator.
+  The smartphone and emulator communicate over TCP port 5601, so enter the following command each time you connect the phone to the computer:
+
+  ``adb -d forward tcp:5601 tcp:5601``
+
+* Launch the Android Wear Preview app and click Connect to establish a link to the emulator.
+
+  The preview app displays Connecting... and then Connected.
 
   .. figure:: images/open.png
     :scale: 35 %
 
-  The emulator displays a list recent of notifications.
+  The emulator icon changes to the Google icon, and the most recent notification is displayed. 
 
-  .. figure:: images/suggest.png
-    :scale: 40 %
+  .. figure:: images/emulator-notify.png
+    :scale: 35 %
 
-  You can swipe vertically to scroll through the notifications, swipe to the right to delete the current notification, and sweep to the left to view available demands. The notifications depend on the activity on your own smartphone, so experiment to see how Android Wear works for you.
+  You can swipe vertically to scroll through other notifications, swipe to the right to delete the current notification, and sweep to the left to view notification actions.
+
+  These notifications are exactly the same as those listed in the action bar pull-down on the phone.
+
+  .. figure:: images/phone-notify.png
+    :scale: 35 %
 
 You are now up and running with Android Wear, and ready to move on to more interesting examples. The preview includes three example projects you can try next. 
