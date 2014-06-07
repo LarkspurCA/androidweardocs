@@ -29,18 +29,15 @@ To launch Android Wear preview samples:
 Try Eliza Chat
 ^^^^^^^^^^^^^^^
 
-The Eliza Chat preview app shows how you might implement an Android Personal Digital Assistant on a wearable device. Eliza is the assistant in this example. All interactions between you and Eliza are done on the wearable device emulator. Eliza's comments are displayed as notifications and your inputs are entered by tapping a reply reply. Normally you would provide voice inputs, but that is not implemented in the preview software. For now, you simply type a what you have to say.
+The Eliza Chat preview app shows how you might implement a Personal Digital Assistant on a wearable device. Eliza is the assistant in this example. Eliza posts responses on the wearable emulator and you enter questions by tapping a reply icon. Normally you would provide voice inputs, but that is not implemented in the preview software. For now, you simply type what you have to say.
 
-When Eliza Chat opens, the first question from Eliza is displayed on the Android device.
+When you first launch the app, Eliza asks how she can help you.
 
- .. figure:: images/eliza-app1.png
-    :scale: 35 %
+.. figure:: images/eliza-sequence.png
 
-The Android Wearable emulator also displays the same question. To reply, swipe the screen then select the reply icon. The reply form opens and you can type your response. The following screens show the sequence for entering a reply, which is "Need a sample".
-
- .. figure:: images/eliza-sequence.png
+To reply, swipe the screen to the left, select the reply icon, and then type your demand in the Reply form. Before the Eliza app accepts your demand, you choose from two options, Edit or Save. This sequence demonstrates a typical UI pattern, which consists of a notification, a reply, and a fixed choice. 
     
-Eliza responds and you can continue with the dialog. The entire session is recorded on the Android device. The following screen shows the transcript for several exchanges with Eliza.
+Eliza then responds to your question and you can continue with the dialog. The entire session is recorded on the Android device. The following screen shows the transcript for several exchanges with Eliza.
 
  .. figure:: images/eliza-app2.png
     :scale: 35 %
@@ -70,4 +67,4 @@ The Wearable Notifications preview app provides a simple way to try out differen
   .. figure:: images/example-notify.png
     :scale: 35 %
 
-The UI is basically a smorgasbord of wearable notification possibilities. The best way to use this app is simply to try out all the choices. You can select a basic notification type (preset), set its priority, and attach action icons.  
+The UI is basically a smorgasbord of wearable notification possibilities. The best way to use this app is simply to try out all the choices. You can select a basic notification type (preset), set its priority, and attach action icons.  You can also include a background image that provides context for the text notification.
