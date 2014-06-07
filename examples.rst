@@ -68,3 +68,5 @@ The Wearable Notifications preview app provides a simple way to try out differen
     :scale: 35 %
 
 The UI is basically a smorgasbord of wearable notification possibilities. The best way to use this app is simply to try out all the choices. You can select a basic notification type (preset), set its priority, and attach action icons.  You can also include a background image that provides context for the text notification.
+
+Unlike a conventional Android app, you cannot define your own layout for a wearable device. Instead, you work with the presets that are available. We expect more capabilities however as new wearable APIs become available.
