@@ -12,7 +12,7 @@ The Android Wear Preview includes three sample applications that demonstrate pos
 Open and Launch a Preview App
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section explains how to open and run any of the preview apps. You need an Android development environment (Android Studio here), your own Android device running the Android Wear Preview App, and an Android Wear emulator.
+This section explains how to open and run any of the preview apps. You need an Android development environment (Android Studio here), your own handheld device running the Android Wear Preview App, and an Android Wear emulator.
 
 To launch Android Wear preview samples:
 
@@ -22,9 +22,9 @@ To launch Android Wear preview samples:
 #. Navigate to the desired sample project, select the ``gradle.build`` file, and click **OK**.
 #. Verify that the project opens without errors.
 #. :ref:`start` on your Android Device.
-#. In Android Studio, select **Run** to install the sample app on your Android device. When prompted to choose a device, make sure to select your Android device, not the Android Wear emulator.
+#. In Android Studio, select **Run** to install the sample app on your handheld device. When prompted to choose a device, make sure to select your handheld device, not the Android Wear emulator.
 
-   The sample app opens on your Android device. If you hare having problems, make sure  the Android Wear Preview App is running and connected to the Android Wear emulator.
+   The sample app opens on your handheld device. If you hare having problems, make sure  the Android Wear Preview App is running and connected to the Android Wear emulator.
 
 Try Eliza Chat
 ^^^^^^^^^^^^^^^
@@ -37,7 +37,7 @@ When you first launch the app, Eliza asks how she can help you.
 
 To reply, swipe the screen to the left, select the reply icon, and then type your demand in the Reply form. Before the Eliza app accepts your demand, you choose from two options, Edit or Save. This sequence demonstrates a typical UI pattern, which consists of a notification, a reply, and a fixed choice. 
     
-Eliza then responds to your question and you can continue with the dialog. The entire session is recorded on the Android device. The following screen shows the transcript for several exchanges with Eliza.
+Eliza then responds to your question and you can continue with the dialog. The entire session is recorded on the handheld device. The following screen shows the transcript for several exchanges with Eliza.
 
  .. figure:: images/eliza-app2.png
     :scale: 35 %
@@ -45,7 +45,7 @@ Eliza then responds to your question and you can continue with the dialog. The e
 Try Recipe Assistant
 ^^^^^^^^^^^^^^^^^^^^^
 
-The Recipe Assistant app is an example of a fully-functional Android application that extends it capabilities to a wearable device. On the Android device, you can scroll through the full recipe and steps. On the wearable device you view the recipe steps one at a time on separate pages.
+The Recipe Assistant app is an example of a fully-functional Android application that extends it capabilities to a wearable device. On the handheld device, you can scroll through the full recipe and steps. On the wearable device you view the recipe steps one at a time on separate pages.
 
 The app starts on the mobile device with three recipes from which to choose. Select the first one and you get the guacamole recipe.
 

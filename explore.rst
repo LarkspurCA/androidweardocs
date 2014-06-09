@@ -1,9 +1,9 @@
 How Does Android Wear Work?
 ===========================
 
-The easiest way to learn how Android Wear works is to install the Android Wear Preview app on your Android device and and try it out. For now, we have to use an Android Wear emulator instead of an actual Android Wear device to see how it works. 
+The easiest way to learn how Android Wear works is to install the Android Wear Preview app on your handheld device and and try it out. For now, we have to use an Android Wear emulator instead of an actual Android Wear device to see how it works. 
 
-The Android Wear Preview app displays all Android device notifications on the Android Wear emulator. You can swipe the screen up or down to scroll through the list of notifications, swipe right to delete a notification, or swipe left to select a demand icon. The functionality is fairly basic at this point, but it is a good stepping off point for more interesting examples later.
+The Android Wear Preview app displays all handheld device notifications on the Android Wear emulator. You can swipe the screen up or down to scroll through the list of notifications, swipe right to delete a notification, or swipe left to select a demand icon. The functionality is fairly basic at this point, but it is a good stepping off point for more interesting examples later.
 
 .. _setup:
 
@@ -47,14 +47,14 @@ To try out the Android Wear Preview, perform the following tasks:
 Start the Android Wear Preview App
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Install the Android Wear Preview app on your Android device.
+1. Install the Android Wear Preview app on your handheld device.
 
   .. figure:: images/apps.png
     :scale: 35 %
 
-2. Connect your Android device to the computer with a USB cable.
+2. Connect your handheld device to the computer with a USB cable.
 
-  The Android device and emulator communicate over TCP port 5601, so enter the following command each time you connect your Android device to the computer:
+  The handheld device and emulator communicate over TCP port 5601, so enter the following command each time you connect your handheld device to the computer:
 
   ``adb -d forward tcp:5601 tcp:5601``
 
@@ -72,7 +72,7 @@ Start the Android Wear Preview App
 
   You can swipe vertically to scroll through other notifications, swipe to the right to delete the current notification, and sweep to the left to view notification actions.
 
-  The displayed notifications are exactly the same as those listed in the action bar pull-down on the Android device.
+  The displayed notifications are exactly the same as those listed in the action bar pull-down on the handheld device.
 
   .. figure:: images/phone-notify.png
     :scale: 35 %
