@@ -1,9 +1,11 @@
 How Does Android Wear Work?
 ===========================
 
-The easiest way to learn how Android Wear works is to install the Android Wear Preview app on your handheld device and and try it out. For now, we have to use an Android Wear emulator instead of an actual Android Wear device to see how it works. 
+By: Michael Hahn, June 2014
 
-The Android Wear Preview app displays all handheld device notifications on the Android Wear emulator. You can swipe the screen up or down to scroll through the list of notifications, swipe right to delete a notification, or swipe left to select a demand icon. The functionality is fairly basic at this point, but it is a good stepping off point for more interesting examples later.
+The easiest way to learn how Android Wear works is to install the Android Wear Preview application on your handheld device and and try it out. For now, we have to use an Android Wear emulator instead of an actual Android Wear device to see how it works. 
+
+The Android Wear Preview application forwards all handheld device notifications to the Android Wear emulator. You can swipe the screen up or down to scroll through the list of notifications, swipe right to delete a notification, or swipe left to select a demand icon. The functionality is fairly basic at this point, but it is a good stepping off point for more interesting examples later.
 
 .. _setup:
 
@@ -14,7 +16,7 @@ To try out the Android Wear Preview, perform the following tasks:
 
 1. Sign up for the `Android Wear Developer Preview <http://developer.android.com/wear/preview/start.html>`_.
 
-  After you receive your confirmation email, you can install the Android Wear Preview Application and download the support library and code samples.
+  After you receive your confirmation email, you can install the Android Wear Preview application and download the support library and code samples.
 
 2. Install the `Android Studio Preview <http://developer.android.com/sdk/installing/studio.html>`_.
 
@@ -52,15 +54,37 @@ Start the Android Wear Preview App
   .. figure:: images/apps.png
     :scale: 35 %
 
-2. Connect your handheld device to the computer with a USB cable.
+2. Enable USB debugging on your handheld device.
 
-  The handheld device and emulator communicate over TCP port 5601, so enter the following command each time you connect your handheld device to the computer:
+  Your handheld device likely disables USB debugging by default, and the option to enable it can be hidden as well. For Samsung Galaxy, you must open Options, select About Phone, and then click Build Number several times. The Options menu then includes Developer options, where you can enable USB debugging.
 
-  ``adb -d forward tcp:5601 tcp:5601``
+3. Connect your handheld device to the computer with a USB cable. 
 
-3. Launch the Android Wear Preview app and click Connect to establish a link to the emulator.
+  Accept any warning or security messages displayed on either the handheld device or computer.
 
-  The preview app displays Connecting... and then Connected.
+4. Verify that the handheld device successfully connected to the computer using the following command:
+
+  ::
+
+     ./adb devices
+     List of devices attached 
+     a1b2c3d5 device
+	
+  If a device is not displayed or it displays with an error such as unauthorized, you must resolve that problem before proceeding.
+  
+  Note: The adb utility is located in the Platform Tools directory of your SDK installation.
+  
+
+  
+5. Open TCP port 5601. The Android Wear Emulator uses this port to communicate with the handheld device.
+
+  ::
+
+  ./adb -d forward tcp:5601 tcp:5601
+
+6. ON the handheld device, launch the Android Wear Preview app and click Connect.
+
+  The preview app initially displays Connecting... then changes to Connected when it establishes a link to the emulator.
 
   .. figure:: images/open.png
     :scale: 35 %
@@ -70,7 +94,7 @@ Start the Android Wear Preview App
   .. figure:: images/emulator-notify.png
     :scale: 35 %
 
-  You can swipe vertically to scroll through other notifications, swipe to the right to delete the current notification, and sweep to the left to view notification actions.
+  You can swipe vertically to scroll through other notifications, swipe to the right to delete the current notification, and swipe to the left to view associated actions.
 
   The displayed notifications are exactly the same as those listed in the action bar pull-down on the handheld device.
 

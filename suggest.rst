@@ -1,6 +1,7 @@
 Android Wear Suggest
 ====================
 
+By: Michael Hahn, June 2014
 
 The Suggest context stream is one of the core functions for Android Wear. It consists of a sequence of notifications about timely information, such as incoming messages or upcoming appointments. It can also display useful information about a task at hand, such as preparing a recipe or communicating with a digital assistant.
 
@@ -8,7 +9,7 @@ The Suggest context stream is one of the core functions for Android Wear. It con
     :scale: 45
     :align: right
 
-This section explains how to display your own custom notifications on a wearable device. The easiest way is to create a normal Notification object, initialized with your custom message, and send it using the NotificationManager. Such notifications are displayed on both the handheld device and wearable emulator, but the wearable can only display the notification text and a small icon.
+This section explains how to display your own custom notifications on a wearable device. The easiest way is to create a normal Notification object, initialize it with your custom message, and send it using the NotificationManager. Such notifications are displayed on both the handheld device and wearable emulator, but the wearable can only display the notification text and a small icon.
 
  .. figure:: images/suggest-big-picture.png
     :scale: 35

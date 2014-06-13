@@ -3,6 +3,8 @@
 What About the Sample Apps?
 ===========================
 
+By: Michael Hahn, June 2014
+
 The Android Wear Preview includes three sample applications that demonstrate possible use cases and UI conventions. 
 
 * ElizaChat
