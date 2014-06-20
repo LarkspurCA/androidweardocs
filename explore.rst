@@ -10,7 +10,7 @@ The Android Wear Preview application forwards all handheld device notifications 
 .. _setup:
 
 Set Up the Development Environment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------
 
 To try out the Android Wear Preview, perform the following tasks:
 
@@ -47,7 +47,7 @@ To try out the Android Wear Preview, perform the following tasks:
 .. _start:
 
 Start the Android Wear Preview App
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------
 
 1. Install the Android Wear Preview app on your handheld device.
 
@@ -82,9 +82,11 @@ Start the Android Wear Preview App
 
   ./adb -d forward tcp:5601 tcp:5601
 
-6. ON the handheld device, launch the Android Wear Preview app and click Connect.
+6. ON the handheld device, launch the Android Wear Preview app.
 
-  The preview app initially displays Connecting... then changes to Connected when it establishes a link to the emulator.
+  The first time you launch the Preview app, an onscreen message reminds you that Android Wear is not a notification listener... Follow the onscreen instructions.
+
+  The preview app displays Connected when it establishes a link to the emulator.
 
   .. figure:: images/open.png
     :scale: 35 %

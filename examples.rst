@@ -12,7 +12,7 @@ The Android Wear Preview includes three sample applications that demonstrate pos
 * WearableNotificationsSample
 
 Open and Launch a Preview App
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------
 
 This section explains how to open and run any of the preview apps. You need an Android development environment (Android Studio here), your own handheld device running the Android Wear Preview App, and an Android Wear emulator.
 
@@ -29,7 +29,7 @@ To launch Android Wear preview samples:
    The sample app opens on your handheld device. If you hare having problems, make sure  the Android Wear Preview App is running and connected to the Android Wear emulator.
 
 Try Eliza Chat
-^^^^^^^^^^^^^^^
+---------------
 
 The Eliza Chat preview app shows how you might implement a Personal Digital Assistant on a wearable device. Eliza is the assistant in this example. Eliza posts responses on the wearable emulator and you enter questions by tapping a reply icon. Normally you would provide voice inputs, but that is not implemented in the preview software. For now, you simply type what you have to say.
 
@@ -45,7 +45,7 @@ Eliza then responds to your question and you can continue with the dialog. The e
     :scale: 35 %
 
 Try Recipe Assistant
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
 The Recipe Assistant app is an example of a fully-functional Android application that extends it capabilities to a wearable device. On the handheld device, you can scroll through the full recipe and steps. On the wearable device you view the recipe steps one at a time on separate pages.
 
@@ -62,7 +62,7 @@ The app starts on the mobile device with three recipes from which to choose. Sel
 Swipe left to move through the steps. For each step you can tap to view more and swipe up or down to move through the content.
 
 Try Wearable Notifications
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 The Wearable Notifications preview app provides a simple way to try out different combinations of wearable UI notifications and patterns. The onscreen choices closely match the capabilities of the ``WearableNotifications`` class, so this is a good opportunity to learn about available displays. Later we will experiment with the underlying code.
 
