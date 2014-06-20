@@ -67,9 +67,9 @@ Write the Notification Code
   
 2. Create a normal Android notification using the NotificationCompat.Builder, and set desired properties.
 
-.. code-block:: java
+  .. code-block:: java
 	  
-      NotificationCompat.Builder notificationBuilder =
+    NotificationCompat.Builder notificationBuilder =
           new NotificationCompat.Builder(this)
           .setSmallIcon(R.drawable.ic_launcher)
           .setContentTitle("Hello Android Wear")
@@ -86,9 +86,7 @@ Write the Notification Code
   
       Notification notification =
           new WearableNotifications.Builder(notificationBuilder)
-          // Set properties
           .setMinPriority
-          // other options
           .build();
 
 4. Get an instance of the Notification Manager service.
@@ -102,7 +100,7 @@ Write the Notification Code
 
   .. code-block:: java
    
-	notificationManager.notify(notificationId, notification);
+    notificationManager.notify(notificationId, notification);
 	
 
  .. figure:: images/hello-wearable.png
@@ -110,7 +108,7 @@ Write the Notification Code
     :align: right
 	
 	
-The example code creates a notification with a title and body, with a minimum priority:
+The result of this code is a notification with a title and body, that has minimum priority:
 
 Before proceeding to more interesting wearable formats, it is worth learning how to add actions (Demands) to a notification.
 
