@@ -32,20 +32,20 @@ Create a Project
 
 2. Select New Project in the Welcome screen.
 
-3. Enter your Application Name and a project location, then click Next.
+3. Enter your Application Name and a project directory, then click Next.
 
 4. Select Blank Activity, then click Next.
 
 5. Click Finish.
 
-6. Select the Main_Activity.java tab. This contains the onCreate method, which is a convenient place to add the notification code.
+6. Select the Main_Activity.java tab. This contains the onCreate method, which is a convenient place to add the code for your first notification.
 
-Add the Support Libraries to build.gradle
-^^^^^^^^^^^^^^^^^^^^^^^^
+Add the Support Libraries as Dependencies
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Copy your wearable-preview-support.jar file to the libs folder.
 
-2. Open the build.gradle file in your project and add the following dependencies. The first dependency in the following example adds the Android Wear Support Library.
+2. Open the build.gradle file in your project and add the following dependencies. The first dependency adds the Android Wear Support Library.
 
   ::
   
@@ -55,7 +55,7 @@ Add the Support Libraries to build.gradle
     }
   
 Write the Notification Code
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1.  Import the following packages into your Main_Activity:
 
@@ -65,7 +65,7 @@ Write the Notification Code
     import android.preview.support.v4.app.NotificationManagerCompat;
     import android.support.v4.app.NotificationCompat;
   
-2. Create a normal Android notification using the NotificationCompat.Builder. For simplicity, add the code to the onCreate method of the MainActivity.
+2. Create a normal Android notification using the NotificationCompat.Builder, and set desired properties.
 
 .. code-block:: java
 	  
@@ -80,15 +80,15 @@ Write the Notification Code
   * Apply a release 4.1 style to the normal notification, such as the one used in the Big Picture example (NotificationCompat.BigPictureStyle).
 
 
-  * Apply Android wearable formats to the normal notification. First create a WearableNotification.builder from the NotificationCompat.builder created in Step 2, then set the desired options and build the notification.
+  * Apply Android wearable formats to the normal notification. First create a WearableNotification.builder, passing the NotificationCompat.builder created in Step 2. Then set the desired properties and build the notification.
 
     .. code-block:: java
   
       Notification notification =
           new WearableNotifications.Builder(notificationBuilder)
-		  // Set options
+          // Set properties
           .setMinPriority
-		  // other options
+          // other options
           .build();
 
 4. Get an instance of the Notification Manager service.
