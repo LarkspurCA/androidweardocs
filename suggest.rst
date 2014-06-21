@@ -11,13 +11,17 @@ The Suggest context stream is one of the core functions for Android Wear. It con
 
 This section explains how to display your own custom notifications on a wearable device. The easiest way is to create a normal Notification, initialize it with your custom message, and send it using the NotificationManager. These notifications are displayed on both the handheld device and wearable emulator with a similar level of detail.
 
-Normal text notifications are only the beginning however. Android 4.1 introduced three additional styles: Big Picture, Big Text, and Inbox. The Big Picture example shows how the Big Picture notification style is displayed on a wearable device.
-
  .. figure:: images/emulator-notify.png
     :scale: 35
     :align: right
 
-Android Wear preview adds even more styles that improve the user experience on the small screen of a wearable device. These styles make it possible to stack, group, and sequence notifications. The email example shows how grouping emails can reduce the number of notifications in the suggest context stream.
+Normal text notifications are only the beginning however. Android 4.1 introduced three additional styles: Big Picture, Big Text, and Inbox. The email inbox reduces the number of notifications in the suggest context stream.
+
+ .. figure:: images/emulator-group.png
+    :scale: 35
+    :align: right
+
+Android Wear preview adds even more styles that improve the user experience on the small screen of a wearable device. These styles make it possible to group or add pages to notifications. The Notifications Bundle example shows how you can group two notifications.
 
 
 First Android Wear Suggest
