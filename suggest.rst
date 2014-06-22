@@ -29,6 +29,8 @@ First Android Wear Suggest
 
 This section explains how to create your first Android Wear notification and add it to the Suggest context stream on the Android Wear emulator. To keep this simple,  start with a basic Hello World project and then extend it for wearable devices.
 
+.. _newapp:
+
 Create a Project
 ^^^^^^^^^^^^^^^^^
 
@@ -43,6 +45,8 @@ Create a Project
 5. Click Finish.
 
 6. Select the Main_Activity.java tab. This contains the onCreate method, which is a convenient place to add the code for your first notification.
+
+.. _dependencies:
 
 Add the Support Libraries as Dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -90,7 +94,7 @@ Write the Notification Code
   
       Notification notification =
           new WearableNotifications.Builder(notificationBuilder)
-          .setMinPriority
+          setGroup("First_Wearable", WearableNotifications.GROUP_ORDER_SUMMARY)
           .build();
 
 4. Get an instance of the Notification Manager service.
@@ -112,7 +116,7 @@ Write the Notification Code
     :align: right
 	
 	
-The result of this code is a notification with a title and body, that has minimum priority:
+The result of this code is a notification with a title and body, that is the summary notification for the First_Wearable group:
 
 Before proceeding to more interesting wearable formats, it is worth learning how to add actions (Demands) to a notification.
 
