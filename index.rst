@@ -3,9 +3,11 @@ Welcome to Android Wear Docs!
 
 **What is Android Wear?**
 
-Android Wear is the new Google API for smart watches and other wearable devices. These wearables work in conjunction with an Android smartphone to put useful information at your fingertips. The first devices that support Android Wear are the Moto 360 and LG G watches, which will be available later this year (2014). The Android Wear development tools are available now however, and this site is devoted to helping developers get started. We are hoping to learn more about Android Wear at the upcoming Google I/O conference.
+By: Michael Hahn, July 2014
 
-If you are new to Android Wear you first need to learn the capabilities of wearable apps and how they work with Android smartphones. Then you can move on to developing your own custom app.
+Android Wear is the Google API for smart watches, Google Glass, and other wearable devices. These wearables work in conjunction with an Android smartphone to put useful information at your fingertips. The first Android watches are LG's G watch and the Samsung Gear Live watch, both of which are available now. The Moto 360 watch is expected later this summer. The Android software that supports both handhelds and wearables was released at Google I/O 2014, along with an Android Studio update that includes features that are specific to wearables. The first wearable apps are now on Google Play, and now is an excellent time to create your own wearable app.
+
+If you are new to Android Wear you first need to learn how to present timely and concise information on the small screen of a wearable, and then become familiar with the software and tools that make it all possible. Then site helps developers quickly work through the basic concepts and then develop their first wearable app.
 
 Contents:
 
@@ -18,10 +20,8 @@ Contents:
    demand.rst
    contact.rst
 
-
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
