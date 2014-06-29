@@ -5,18 +5,18 @@ What About the Sample Apps?
 
 By: Michael Hahn, June 2014
 
-The Android Wear Preview includes three sample applications that demonstrate possible use cases and UI conventions. 
+The Android Wear SDK includes many sample applications, including the following:  
 
 * ElizaChat
 * RecipeAssistant
 * WearableNotificationsSample
 
-Open and Launch a Preview App
-------------------------------
+Open and Launch an Example App
+-------------------------------
 
-This section explains how to open and run any of the preview apps. You need an Android development environment (Android Studio here), your own handheld device running the Android Wear Preview App, and an Android Wear emulator.
+This section explains how to open and run any of the sample apps. You need an Android development environment (Android Studio here), your own handheld device running the Android Wear App, and either an Android Wear device or emulator.
 
-To launch Android Wear preview samples:
+To launch Android Wear samples:
 
 #. If you have not already done so, :ref:`setup`.
 #. Start Android Studio.
@@ -26,12 +26,12 @@ To launch Android Wear preview samples:
 #. :ref:`start` on your Android Device.
 #. In Android Studio, select **Run** to install the sample app on your handheld device. When prompted to choose a device, make sure to select your handheld device, not the Android Wear emulator.
 
-   The sample app opens on your handheld device. If you hare having problems, make sure  the Android Wear Preview App is running and connected to the Android Wear emulator.
+   The sample app opens on your handheld device. If you hare having problems, make sure  the Android Wear App is running and connected to the Android Wear emulator.
 
 Try Eliza Chat
 ---------------
 
-The Eliza Chat preview app shows how you might implement a Personal Digital Assistant on a wearable device. Eliza is the assistant in this example. Eliza posts responses on the wearable emulator and you enter questions by tapping a reply icon. Normally you would provide voice inputs, but that is not implemented in the preview software. For now, you simply type what you have to say.
+The Eliza Chat sample app shows how you might implement a Personal Digital Assistant on a wearable device. Eliza is the assistant in this example. Eliza posts responses on the wearable emulator and you enter questions by tapping a reply icon. Normally you would provide voice inputs, but that is not implemented in this sample. For now, you simply type what you have to say.
 
 When you first launch the app, Eliza asks how she can help you.
 
@@ -64,7 +64,7 @@ Swipe left to move through the steps. For each step you can tap to view more and
 Try Wearable Notifications
 ---------------------------
 
-The Wearable Notifications preview app provides a simple way to try out different combinations of wearable UI notifications and patterns. The onscreen choices closely match the capabilities of the ``WearableNotifications`` class, so this is a good opportunity to learn about available displays. Later we will experiment with the underlying code.
+The Wearable Notifications sample app provides a simple way to try out different combinations of wearable UI notifications and patterns. The onscreen choices closely match the capabilities of the ``WearableNotifications`` class, so this is a good opportunity to learn about available displays. Later we will experiment with the underlying code.
 
   .. figure:: images/example-notify.png
     :scale: 35 %
