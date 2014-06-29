@@ -5,23 +5,23 @@ By: Michael Hahn, June 2014
 
 The Suggest context stream is one of the core functions for Android Wear. It consists of a sequence of notifications about timely information, such as incoming messages or upcoming appointments. It can also display useful information about a task at hand, such as preparing a recipe or communicating with a digital assistant.
 
- .. figure:: images/suggest-basic.png
+ .. figure:: images/suggest-notify.png
     :scale: 35
     :align: right
 
 This section explains how to display your own custom notifications on a wearable device. The easiest way is to create a normal Notification, initialize it with your custom message, and send it using the NotificationManager. These notifications are displayed on both the handheld device and wearable emulator with a similar level of detail.
 
- .. figure:: images/emulator-notify.png
+ .. figure:: images/suggest-big-picture.png
     :scale: 35
     :align: right
 
-Normal text notifications are only the beginning however. Android 4.1 introduced three additional styles: Big Picture, Big Text, and Inbox. The email inbox reduces the number of notifications in the suggest context stream.
+Normal text notifications are only the beginning however. Android 4.1 introduced three additional styles: Big Picture, Big Text, and Inbox. The big picture example demonstrates one way to add a contextual image to the notificaton.
 
- .. figure:: images/emulator-group.png
+ .. figure:: images/suggest-email.png
     :scale: 35
     :align: right
 
-Android Wear preview adds even more styles that improve the user experience on the small screen of a wearable device. These styles make it possible to group or add pages to notifications. The Notifications Bundle example shows how you can group two notifications.
+Android Wear adds even more styles that improve the user experience on the small screen of a wearable device. These styles make it possible to group or add pages to notifications. The email example shows how messages are grouped to reduce the number of notification delivered to a wearable.
 
 
 First Android Wear Suggest
