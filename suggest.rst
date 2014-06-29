@@ -34,34 +34,23 @@ This section explains how to create your first Android Wear notification and add
 Create a Project
 ^^^^^^^^^^^^^^^^^
 
-1. Launch Android Studio.
+1. Launch Android Studio (Version 0.8 or later).
 
 2. Select New Project in the Welcome screen.
 
-3. Enter your Application Name and a project directory, then click Next.
+3. In the New Project dialog, enter your Application Name, Domain, and a project directory. Click Next.
 
-4. Select Blank Activity, then click Next.
+4. In the Form Factors dialog, select Phone and Wear for the handheld and wearable devices, respectively. Keep the default SDKs, and then click Next.
 
-5. Click Finish.
+5. In the Mobile dialog, select Blank Activity. Click Next.
 
-6. Select the Main_Activity.java tab. This contains the onCreate method, which is a convenient place to add the code for your first notification.
+6. In the Option dialog, enter the Activity Name, Layout Name, and Title for the handheld activity. Then click Next.
 
-.. _dependencies:
+7. In the Wear dialog, Select Blank Wear Activity. Then click Next.
 
-Add the Support Libraries as Dependencies
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+8.  In the Options dialog, enter an Activity Name, Layout Name, Round Layout Name, and Rectangular Layout Name for the wearable activity. Click Finish.
 
-1. Copy your wearable-preview-support.jar file to the libs folder.
 
-2. Open the build.gradle file in your project and add the following dependencies. The first dependency adds the Android Wear Support Library.
-
-  ::
-  
-    dependencies {
-      compile fileTree(dir: 'libs', include: ['*.jar'])
-      compile "com.android.support:support-v4:19.1.+"
-    }
-  
 Write the Notification Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
