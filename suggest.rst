@@ -15,13 +15,15 @@ This section explains how to display your own custom notifications on a wearable
     :scale: 35
     :align: right
 
-Normal text notifications are only the beginning however. Android 4.1 introduced three additional styles: Big Picture, Big Text, and Inbox. The big picture example demonstrates one way to add a contextual image to the notificaton.
+Normal text notifications are only the beginning however. Android 4.1 introduced three additional styles: Big Picture, Big Text, and Inbox. The big picture example demonstrates one way to add a contextual image to the notification.
 
  .. figure:: images/suggest-email.png
     :scale: 35
     :align: right
 
 Android Wear adds even more styles that improve the user experience on the small screen of a wearable device. These styles make it possible to group or add pages to notifications. The email example shows how messages are grouped to reduce the number of notification delivered to a wearable.
+
+You do not have to rely any of these stock UI styles. You can create your own full-screen layout that best suits your custom application. Just keep it simple and be consistent in presentation and usage with other wearable apps. For example, do not try to replicate the grid layout of the handheld device - the wearable is just too small for this approach. Users are just going to glance at their watch, speak simple commands, or tap and swipe the screen.
 
 
 First Android Wear Suggest
@@ -50,41 +52,50 @@ Create a Project
 
 8.  In the Options dialog, enter an Activity Name, Layout Name, Round Layout Name, and Rectangular Layout Name for the wearable activity. Click Finish.
 
+Add Dependencies for the Wearable Package
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Add a build dependency for the wearable support package to the build.gradle file. For Android Studio Beta, the correct file is within the mobile folder.
+
+  .. code-block:: java
+  
+    dependencies {
+      compile fileTree(dir: 'libs', include: ['*.jar'])
+      compile "com.android.support:support-v4:20.0.+" 
+    }
+
 
 Write the Notification Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.  Import the following packages into your Main_Activity:
+1.  Import the following packages into the Activity class for mobile:
 
   .. code-block:: java
    
-    import android.preview.support.wearable.notifications.*;
-    import android.preview.support.v4.app.NotificationManagerCompat;
+    import android.support.v4.app.NotificationManagerCompat;
     import android.support.v4.app.NotificationCompat;
   
-2. Create a normal Android notification using the NotificationCompat.Builder, and set desired properties.
+2. Add Android Wearable functionality to a WearableExtender object, for example ShowBackgroundOnly.
+
+  .. code-block:: java
+  
+    NotificationCompat.WearableExtender wearableExtender =
+      new NotificationCompat.WearableExtender()
+          .setHintShowBackgroundOnly(true);
+
+3. Create a normal Android notification using the NotificationCompat.Builder and set desired properties, including those defined in the WearableExtender.
 
   .. code-block:: java
 	  
     NotificationCompat.Builder notificationBuilder =
-          new NotificationCompat.Builder(this)
-          .setSmallIcon(R.drawable.ic_launcher)
+      new NotificationCompat.Builder(this)
+         .setSmallIcon(R.drawable.ic_launcher)
           .setContentTitle("Hello Android Wear")
-          .setContentText("First Wearable notification.");
+          .setContentText("First Wearable notification.")
+		  .extend(wearableExtender)
+		  .build();
 		  
-3. Optionally, enhance the normal notification in one of two ways:
-
-  * Apply a release 4.1 style to the normal notification, such as the one used in the Big Picture example (NotificationCompat.BigPictureStyle).
-
-
-  * Apply Android wearable formats to the normal notification. First create a WearableNotification.builder, passing the NotificationCompat.builder created in Step 2. Then set the desired properties and build the notification.
-
-    .. code-block:: java
-  
-      Notification notification =
-          new WearableNotifications.Builder(notificationBuilder)
-          setGroup("First_Wearable", WearableNotifications.GROUP_ORDER_SUMMARY)
-          .build();
+3. Optionally, apply a release 4.1 style to the normal notification, such as the one used in the Big Picture example (NotificationCompat.BigPictureStyle).
 
 4. Get an instance of the Notification Manager service.
 
@@ -105,7 +116,7 @@ Write the Notification Code
     :align: right
 	
 	
-The result of this code is a notification with a title and body, that is the summary notification for the First_Wearable group:
+The result of this example code is a notification with a title and body.
 
 Before proceeding to more interesting wearable formats, it is worth learning how to add actions (Demands) to a notification.
 
