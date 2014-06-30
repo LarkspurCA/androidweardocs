@@ -17,7 +17,7 @@ The Android Wear app has the following capabilities:
 
 * Options for enabling voice services for selected wearable actions
 
-Note: The Android Wear app will likely be available on Google Play by July 7, but you can get it earlier if you are a developer. 
+Note: The Android Wear app will likely be available on Google Play by July 7, but you can get it earlier if you are a developer. For more information, see `Google Play services Preview for Wear <http://developer.android.com/preview/google-play-services-wear.html>`_.
 
 All you need to try out Android Wear is the Android Wear app and one of the new Android Wear watches. Otherwise, you can use create a wearable emulator using the AVD tool in your development environment.
 
@@ -87,7 +87,7 @@ Start the Android Wear App
   
 
   
-5. Open TCP port 5601. The Android Wear Emulator uses this port to communicate with the handheld device.
+5. Open TCP port 5601 on your computer. The Android Wear Emulator uses this port to communicate with the handheld device.
 
   ::
 
@@ -97,18 +97,16 @@ Start the Android Wear App
 
   The first time you launch the app, an onscreen message reminds you that Android Wear is not a notification listener... Follow the onscreen instructions.
 
-  When app binds to the emulator, Emulator Connected is displayed in the action bar. A menu on the same page lists the options you can invoke.
+  When the Android app successfully pairs with the emulator, the action bar displays Emulator Connected. The menu in the action bar lists the options you can invoke.
 
   .. figure:: images/open.png
     :scale: 25 %
 
-  On the emulator, the cloud icon disappears, and the most recent notification is displayed. 
+  On the emulator, the cloud icon disappears, and the current temperature is displayed. As new notifications occur, they are displayed.
 
-  .. figure:: images/emulator-notify.png
+  .. figure:: images/emulator-idle.png
     :scale: 35 %
 
-  You can swipe vertically to scroll through other notifications, swipe to the right to delete the current notification, and swipe to the left to view associated actions.
-
-  The displayed notifications are the same as those listed in the action bar pull-down on the handheld device.
+  You can swipe vertically to scroll through other notifications, swipe to the right to delete the current notification, and swipe to the left to view any associated actions. The notifications displayed on the wearable are the same as those listed in the action bar pull-down on the handheld device.
 
 You are now up and running with Android Wear, and ready to move on to your first wearable app. 
