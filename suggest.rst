@@ -1,7 +1,7 @@
 Android Wear Suggest
 ====================
 
-By: Michael Hahn, June 2014
+By: Michael Hahn, July 2014
 
 The Suggest context stream is one of the core functions for Android Wear. It consists of a sequence of notifications about timely information, such as incoming messages or upcoming appointments. It can also display useful information about a task at hand, such as preparing a recipe or communicating with a digital assistant.
 
@@ -23,7 +23,7 @@ Normal text notifications are only the beginning however. Android 4.1 introduced
 
 Android Wear adds even more styles that improve the user experience on the small screen of a wearable device. These styles make it possible to group or add pages to notifications. The email example shows how messages are grouped to reduce the number of notification delivered to a wearable.
 
-You do not have to rely any of these stock UI styles. You can create your own full-screen layout that best suits your custom application. Just keep it simple and be consistent in presentation and usage with other wearable apps. For example, do not try to replicate the grid layout of the handheld device - the wearable is just too small for this approach. Users are just going to glance at their watch, speak simple commands, or tap and swipe the screen.
+You do not have to rely any of these stock UI styles. You can create your own full-screen layout that best suits your custom application. Just keep it simple and be consistent in presentation and usage with other wearable apps. For example, do not try to replicate the grid layout of the handheld device - the wearable is just too small for this approach. Users just glance at their watch, speak simple commands, or tap and swipe the screen.
 
 
 First Android Wear Suggest
