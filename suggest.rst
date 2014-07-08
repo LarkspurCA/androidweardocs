@@ -68,14 +68,15 @@ Add a build dependency for the wearable support package to the build.gradle file
 Write the Notification Code
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.  Import the following packages into the Activity class for mobile:
+1.  Import the the packages that support wearable apps into the handheld Activity. As a minimum you need the following notification and remote input packages:
 
   .. code-block:: java
    
     import android.support.v4.app.NotificationManagerCompat;
     import android.support.v4.app.NotificationCompat;
+	import android.support.v4.app.RemoteInput;
   
-2. Add Android Wearable functionality to a WearableExtender object, for example ShowBackgroundOnly.
+2. Add Android Wearable features to a Wearable extender object, for example ShowBackgroundOnly.
 
   .. code-block:: java
   
@@ -92,8 +93,8 @@ Write the Notification Code
          .setSmallIcon(R.drawable.ic_launcher)
           .setContentTitle("Hello Android Wear")
           .setContentText("First Wearable notification.")
-		  .extend(wearableExtender)
-		  .build();
+          .extend(wearableExtender)
+          .build();
 		  
 3. Optionally, apply a release 4.1 style to the normal notification, such as the one used in the Big Picture example (NotificationCompat.BigPictureStyle).
 
