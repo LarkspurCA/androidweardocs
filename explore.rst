@@ -1,7 +1,7 @@
 How Does Android Wear Work?
 ===========================
 
-By: Michael Hahn, July 2014
+By Michael Hahn, July 2014
 
 The easiest way to learn how Android Wear works is to install the Android Wear application on your handheld device and and try it out. The new Android Wear app completely replaces the earlier Android Wear Preview app.
 
@@ -16,8 +16,6 @@ The Android Wear app has the following capabilities:
 * Options for extending Google Now, Location Services, Google Fit, and Contact Recognition to your wearable
 
 * Options for enabling voice services for selected wearable actions
-
-Note: The Android Wear app will likely be available on Google Play by July 7, but you can get it earlier if you are a developer. For more information, see `Google Play services Preview for Wear <http://developer.android.com/preview/google-play-services-wear.html>`_.
 
 All you need to try out Android Wear is the Android Wear app and one of the new Android Wear watches. Otherwise, you can use create a wearable emulator using the AVD tool in your development environment.
 
@@ -85,7 +83,6 @@ Start the Android Wear App
   
   Note: The adb executable is located in the Platform Tools directory where your Android SDK is installed.
   
-
   
 5. Open TCP port 5601 on your computer. The Android Wear Emulator uses this port to communicate with the handheld device.
 

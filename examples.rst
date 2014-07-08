@@ -3,7 +3,7 @@
 What About the Sample Apps?
 ===========================
 
-By: Michael Hahn, June 2014
+By Michael Hahn, June 2014
 
 The Android Wear SDK includes many sample applications, including the following:  
 

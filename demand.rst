@@ -62,7 +62,7 @@ Android Wear preview implements demands using Intents.
 	  
 5. Create a wearable action.
 
-  The following example creates an action for a notification that uses a standard reply icon and label, and adds the pending intent and remote input from previous steps.
+  The following example creates an action for the notification that uses a standard reply icon and label, and adds the pending intent and remote input from previous steps.
 
   .. code-block:: java
   
@@ -80,7 +80,7 @@ Android Wear preview implements demands using Intents.
       new NotificationCompat.WearableExtender()
 	  .addAction(replyAction);
 
-7. Create a notification that includes the PendingIntent. The following example creates a normal notification that includes an an open demand for the content.
+7. Create a notification that includes the PendingIntent. The following example creates a normal notification that includes an icon to reply to the content.
 
   .. code-block:: java
 
@@ -150,6 +150,6 @@ Selecting the reply icon displays the voice prompt, and then the confirmation af
   The example DemandIntentReceiver receives the broadcasted intent and extracts the voice input. Log messages show the value of the extra text within the intent and the voice string from the remote input. 
   
   .. code-block:: text
-	
-	V/MyTag﹕ Extra message from intent = Reply icon selected.
-	V/MyTag﹕ User reply from wearable: Hello handheld!	
+  
+    MyTag: Extra message from intent = Reply icon selected.
+	MyTag: User reply from wearable: Hello handheld!
