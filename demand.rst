@@ -92,18 +92,18 @@ Android Wear preview implements demands using Intents.
          .extend(wearableExtender)
          .build();
   
-  8. Get an instance of the Notification Manager service.
+8. Get an instance of the Notification Manager service.
 
-    .. code-block:: java
+  .. code-block:: java
 
-      NotificationManagerCompat notificationManager =
-        NotificationManagerCompat.from(this);
+    NotificationManagerCompat notificationManager =
+      NotificationManagerCompat.from(this);
 
-  9. Dispatch the notification. 
+9. Dispatch the notification. 
 
-    .. code-block:: java
+  .. code-block:: java
    
-      notificationManager.notify(notificationId, notification);
+    notificationManager.notify(notificationId, notification);
 	
 Create a Notification Receiver
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
