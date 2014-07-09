@@ -152,4 +152,4 @@ Selecting the reply icon displays the voice prompt, and then the confirmation af
   .. code-block:: text
   
     MyTag: Extra message from intent = Reply icon selected.
-	MyTag: User reply from wearable: Hello handheld!
+    MyTag: User reply from wearable: Hello handheld!

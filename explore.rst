@@ -3,9 +3,9 @@ How Does Android Wear Work?
 
 By Michael Hahn, July 2014
 
-The easiest way to learn how Android Wear works is to install the Android Wear application on your handheld device and and try it out. The new Android Wear app completely replaces the earlier Android Wear Preview app.
+The easiest way to learn how Android Wear works is to install the Android Wear companion app on your handheld device, connect an Android watch or emulator and try it out. The new Android Wear companion app completely replaces the earlier Android Wear Preview app.
 
-The Android Wear app has the following capabilities:
+The Android Wear companion app has the following capabilities:
 
 * Tutorial that introduces the wearable UI
 
@@ -17,7 +17,10 @@ The Android Wear app has the following capabilities:
 
 * Options for enabling voice services for selected wearable actions
 
-All you need to try out Android Wear is the Android Wear app and one of the new Android Wear watches. Otherwise, you can use create a wearable emulator using the AVD tool in your development environment.
+I Have an Android Watch
+------------------------
+
+If you have an Android watch, you simply pair it with your handheld device, install and launch the Android Wear companion app, and try it out. If you don't have a wearable device yet, you can create a wearable emulator using the AVD tool in your development environment.
 
 .. _setup:
 
@@ -55,10 +58,10 @@ To try out Android Wear using an emulator, perform the following tasks:
 
 .. _start:
 
-Start the Android Wear App
+Start the Android Wear Companion App
 ---------------------------
 
-1. Install the Android Wear app on your handheld device.
+1. Install the Android Wear companion app on your handheld device.
 
   .. figure:: images/apps.png
     :scale: 25 %
@@ -105,5 +108,8 @@ Start the Android Wear App
     :scale: 35 %
 
   You can swipe vertically to scroll through other notifications, swipe to the right to delete the current notification, and swipe to the left to view any associated actions. The notifications displayed on the wearable are the same as those listed in the action bar pull-down on the handheld device.
+  
+Next Steps
+-----------
 
-You are now up and running with Android Wear, and ready to move on to your first wearable app. 
+You are now up and running with Android Wear, and ready to move on to your first wearable app. Initially, you write an app that can display notifications and receive user inputs from a wearable device, but runs code on the handheld device only. Later you can develop more powerful software that runs Android code on the wearable device as well.
