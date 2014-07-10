@@ -52,6 +52,8 @@ Create a Project
 
 8.  In the Options dialog, enter an Activity Name, Layout Name, Round Layout Name, and Rectangular Layout Name for the wearable activity. Click Finish.
 
+.. _dependencies:
+
 Add Dependencies for the Wearable Package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

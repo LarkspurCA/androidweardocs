@@ -15,14 +15,12 @@ The Android Wear app demonstrates this core function for messages. When new emai
 First Android Wear Demand
 --------------------------
 
+If you have not already done so, :ref:`newapp` and :ref:`dependencies`. The new project wizard creates a project with two main activities, one for the handheld device and another for the wearable. To create your first demand, you only add code in the handheld activity, located under "mobile" in the project hierarchy.
+
 Create the main activity
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Android Wear preview implements demands using Intents.
-
-1. If you have not already done so, :ref:`newapp` and :ref:`dependencies`.
-
-2. Create an Intent that defines the action that the handheld device should take in response to a wearable action (demand). 
+1. Create an Intent that defines the action that the handheld device should take in response to a wearable action (demand). 
 
    The Intent has the following parameters:
 
@@ -40,7 +38,7 @@ Android Wear preview implements demands using Intents.
       .putExtra(EXTRA_MESSAGE, “Reply selected.")
       .setAction(ACTION_DEMAND);
 
-3. Create a PendingIntent for the notification. 
+2. Create a PendingIntent for the notification. 
 
   A PendingIntent wraps the intent to grant the privileges needed for it to execute in your application. It contains the context of your activity, service, or broadcast receiver and the Intent object itself. 
 
@@ -51,7 +49,7 @@ Android Wear preview implements demands using Intents.
     PendingIntent demandPendingIntent =
         PendingIntent.getActivity(this, 0, demandIntent, 0);
 
-4. Optionally, create a remoteInput object to hold a voice reply from the wearable device. A voice request or response is a common action for a user because of the small size of the wearable UI.
+3. Optionally, create a remoteInput object to hold a voice reply from the wearable device. A voice request or response is a common action for a user because of the small size of the wearable UI.
 
   .. code-block:: java
   
@@ -60,7 +58,7 @@ Android Wear preview implements demands using Intents.
       .setLabel(replyLabel)
       .build();
 	  
-5. Create a wearable action.
+4. Create a wearable action.
 
   The following example creates an action for the notification that uses a standard reply icon and label, and adds the pending intent and remote input from previous steps.
 
@@ -72,7 +70,7 @@ Android Wear preview implements demands using Intents.
         .addRemoteInput(remoteInput)
         .build(); 
 
-6. Create a WearableExtender for the a notification and add the wearable reply action.
+5. Create a WearableExtender for the a notification and add the wearable reply action.
 
   .. code-block:: java
   
@@ -80,7 +78,7 @@ Android Wear preview implements demands using Intents.
       new NotificationCompat.WearableExtender()
 	  .addAction(replyAction);
 
-7. Create a notification that includes the PendingIntent. The following example creates a normal notification that includes an icon to reply to the content.
+6. Create a notification that includes the PendingIntent. The following example creates a normal notification that includes an icon to reply to the content.
 
   .. code-block:: java
 
@@ -92,14 +90,14 @@ Android Wear preview implements demands using Intents.
          .extend(wearableExtender)
          .build();
   
-8. Get an instance of the Notification Manager service.
+7. Get an instance of the Notification Manager service.
 
   .. code-block:: java
 
     NotificationManagerCompat notificationManager =
       NotificationManagerCompat.from(this);
 
-9. Dispatch the notification. 
+8. Dispatch the notification. 
 
   .. code-block:: java
    
