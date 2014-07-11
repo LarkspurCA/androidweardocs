@@ -15,10 +15,10 @@ The Android Wear app demonstrates this core function for messages. When new emai
 First Android Wear Demand
 --------------------------
 
-If you have not already done so, :ref:`newapp` and :ref:`dependencies`. The new project wizard creates a project with two main activities, one for the handheld device and another for the wearable. To create your first demand, you only add code in the handheld activity, located under "mobile" in the project hierarchy.
+If you have not already done so, :ref:`newapp` and :ref:`dependencies`. The new project wizard in Android Studio beta creates a project with two main activities, one for the handheld device and another for the wearable. To create your first demand, add code in the handheld activity only, located in the "mobile" branch of the project hierarchy. The software preinstalled on a wearable device or emulator handles the task of receiving and displaying notifications from the handheld.
 
-Create the main activity
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Modify the Handheld Activity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Create an Intent that defines the action that the handheld device should take in response to a wearable action (demand). 
 
@@ -145,9 +145,12 @@ Selecting the reply icon displays the voice prompt, and then the confirmation af
    .. figure:: images/demand-sequence-voice.png
       :scale: 100	
 	
-  The example DemandIntentReceiver receives the broadcasted intent and extracts the voice input. Log messages show the value of the extra text within the intent and the voice string from the remote input. 
+The example DemandIntentReceiver receives the broadcasted intent and extracts the voice input. Log messages show the value of the extra text within the intent and the voice string from the remote input. 
   
   .. code-block:: text
   
     MyTag: Extra message from intent = Reply icon selected.
-    MyTag: User reply from wearable: Hello handheld!
+    MyTag: User reply from wearable: hello handheld
+
+
+	

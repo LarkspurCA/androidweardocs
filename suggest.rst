@@ -23,13 +23,13 @@ Normal text notifications are only the beginning however. Android 4.1 introduced
 
 Android Wear adds even more styles that improve the user experience on the small screen of a wearable device. These styles make it possible to group or add pages to notifications. The email example shows how messages are grouped to reduce the number of notification delivered to a wearable.
 
-You do not have to rely any of these stock UI styles. You can create your own full-screen layout that best suits your custom application. Just keep it simple and be consistent in presentation and usage with other wearable apps. For example, do not try to replicate the grid layout of the handheld device - the wearable is just too small for this approach. Users just glance at their watch, speak simple commands, or tap and swipe the screen.
+You do not have to rely any of these stock UI styles. You can create your own full-screen layout that best suits your custom wearable application. Just keep it simple and be consistent in presentation and usage with other wearable displays. For example, do not try to replicate the grid layout of the handheld device - the wearable is just too small for this approach. Users just glance at their watch, speak simple commands, or tap and swipe the screen.
 
 
 First Android Wear Suggest
 ---------------------------
 
-This section explains how to create your first Android Wear notification and add it to the Suggest context stream on the Android Wear emulator. To keep this simple,  start with a basic Hello World project and then extend it for wearable devices.
+This section explains how to create your first Android Wear notification and add it to the Suggest context stream on an Android wearable, or emulator. The new project wizard in Android Studio beta creates a project with two main activities, one for the handheld device and another for the wearable. To create your first suggest notification, add code in the handheld activity only, located in the "mobile" branch of the project hierarchy. The preinstalled software on a wearable device or emulator handles the task of receiving and displaying notifications from the handheld.
 
 .. _newapp:
 
@@ -42,7 +42,7 @@ Create a Project
 
 3. In the New Project dialog, enter your Application Name, Domain, and a project directory. Click Next.
 
-4. In the Form Factors dialog, select Phone and Wear for the handheld and wearable devices, respectively. Keep the default SDKs, and then click Next.
+4. In the Form Factors dialog, select Phone and Tablet to create a handheld activity, and Wear to create a wearable activity. Keep the default SDKs, and then click Next.
 
 5. In the Mobile dialog, select Blank Activity. Click Next.
 
@@ -54,10 +54,10 @@ Create a Project
 
 .. _dependencies:
 
-Add Dependencies for the Wearable Package
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Add Build Dependencies
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add a build dependency for the wearable support package to the build.gradle file. For Android Studio Beta, the correct file is within the mobile folder.
+Add a build dependency for the wearable support package to the build.gradle file. For Android Studio Beta, the correct file is within the "mobile" branch of the project hierarchy. 
 
   .. code-block:: java
   
@@ -66,9 +66,8 @@ Add a build dependency for the wearable support package to the build.gradle file
       compile "com.android.support:support-v4:20.0.+" 
     }
 
-
-Write the Notification Code
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Modify the Handheld Activity
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1.  Import the the packages that support wearable apps into the handheld Activity. As a minimum you need the following notification and remote input packages:
 
