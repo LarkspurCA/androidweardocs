@@ -59,7 +59,7 @@ To try out Android Wear using an emulator, perform the following tasks:
 .. _start:
 
 Start the Android Wear Companion App
----------------------------
+-------------------------------------
 
 1. Install the Android Wear companion app on your handheld device.
 
