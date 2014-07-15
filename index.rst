@@ -18,6 +18,7 @@ Contents:
    examples.rst
    suggest.rst
    demand.rst
+   wearable.rst
    contact.rst
 
 Indices and tables
