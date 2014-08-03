@@ -63,7 +63,7 @@ Add a build dependency for the wearable support package to the build.gradle file
   
     dependencies {
       compile fileTree(dir: 'libs', include: ['*.jar'])
-      compile "com.android.support:support-v4:20.0.+" 
+      compile 'com.google.android.support:wearable:+' 
     }
 
 Modify the Handheld Activity
