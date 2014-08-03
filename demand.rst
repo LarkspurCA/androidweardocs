@@ -3,14 +3,14 @@ Android Wear Demand
 
 By Michael Hahn, July 2014
 
-The Demand context is one of the core functions for Android Wear. A demand is displayed as a large icon, typically when you swipe a displayed suggestion. You tap on an icon to perform the desired demand.
+The Demand context is one of the core functions for Android Wear. A demand is displayed as a large icon, typically when you swipe a displayed suggestion (notification). You tap on an icon to perform the desired demand.
 
 
  .. figure:: images/demand-2.png
     :scale: 40
     :align: right
 
-The Android Wear app demonstrates this core function for messages. When new email arrives, you swipe to the left to scroll through the demand icons, such as open, reply, and archive. You can any custom icon as well. This section explains how to code your own wearable demand for voice input.
+The Android Wear app demonstrates this core function for messages. When new email arrives, you swipe to the left to scroll through the demand icons, such as open, reply, and archive. You can create custom icons for your app as well. This section explains how to code your own wearable demand that handles a voice reply.
 
 First Android Wear Demand
 --------------------------
@@ -20,6 +20,8 @@ If you have not already done so, :ref:`newapp` and :ref:`dependencies`. The new 
 Modify the Handheld Activity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Your handheld activity must create a notification that includes a wearable action (demand). This action includes an intent that the wearable invokes when a user selects the demand, along with optional data such as a voice response from the user. You build the notification with a hierarchy of objects, intent -> pending intent -> notification action -> wearable extender, and finally the notification itself. 
+
 1. Create an Intent that defines the action that the handheld device should take in response to a wearable action (demand). 
 
    The Intent has the following parameters:
@@ -28,7 +30,9 @@ Modify the Handheld Activity
    
    > The name of the class that is the intent target.
    
-   > An extra consisting of a demand id and a value that identify the intent.
+   > An extra that provides intent details.
+   
+   > The type of action requested.
    
    The following example shows how to create the intent for a reply.
 
@@ -38,7 +42,7 @@ Modify the Handheld Activity
       .putExtra(EXTRA_MESSAGE, “Reply selected.")
       .setAction(ACTION_DEMAND);
 
-2. Create a PendingIntent for the notification. 
+2. Create a PendingIntent to include in the notification. 
 
   A PendingIntent wraps the intent to grant the privileges needed for it to execute in your application. It contains the context of your activity, service, or broadcast receiver and the Intent object itself. 
 
@@ -70,7 +74,7 @@ Modify the Handheld Activity
         .addRemoteInput(remoteInput)
         .build(); 
 
-5. Create a WearableExtender for the a notification and add the wearable reply action.
+5. Create a WearableExtender for the a notification and add the wearable action.
 
   .. code-block:: java
   
@@ -78,7 +82,7 @@ Modify the Handheld Activity
       new NotificationCompat.WearableExtender()
 	  .addAction(replyAction);
 
-6. Create a notification that includes the PendingIntent. The following example creates a normal notification that includes an icon to reply to the content.
+6. Create a notification and extended it to include the wearable extender just created. The following example creates a notification that includes a reply action (demand).
 
   .. code-block:: java
 
