@@ -1,7 +1,7 @@
-Android Wearable Applications
+Wearable Applications
 ==============================
 
-By Michael Hahn, July 2014
+By Michael Hahn, August 2014
 
 Android wearable devices have an Android operating system, so you can develop  applications for wearables much as you do for handheld devices. Simple handheld apps can potentially run in a standalone mode on the wearable, without being paired with a handheld. More commonly however, wearable apps work in conjunction with a handheld for voice recognition, Internet access, and other services.
 
