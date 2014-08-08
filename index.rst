@@ -19,6 +19,7 @@ Contents:
    suggest.rst
    demand.rst
    wearable.rst
+   sync.rst
    contact.rst
 
 Indices and tables

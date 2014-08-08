@@ -75,7 +75,7 @@ Modify the Handheld Activity
    
     import android.support.v4.app.NotificationManagerCompat;
     import android.support.v4.app.NotificationCompat;
-	import android.support.v4.app.RemoteInput;
+    import android.support.v4.app.RemoteInput;
   
 2. Add Android Wearable features to a Wearable extender object, for example ShowBackgroundOnly.
 
