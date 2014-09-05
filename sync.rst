@@ -46,6 +46,8 @@ To send a message , update the code in the main Activity of the sending device.
       GoogleApiClient.OnConnectionFailedListener {
 
       GoogleApiClient googleClient;
+      private static final String MESSAGE_RECEIVED_PATH = "/message_received_path";
+      private static final String MESSAGE = "Hello wearable\n Via the data layer";
 
       @Override
       protected void onCreate(Bundle savedInstanceState) {
@@ -143,20 +145,22 @@ You can monitor the data layer for new messages using either a listener service 
   .. code-block:: java
   
       public class ListenerService extends WearableListenerService {
+	  
+        private static final String MESSAGE_RECEIVED_PATH = "/message_received_path";
 
-      @Override
-      public void onMessageReceived(MessageEvent messageEvent) {
+        @Override
+        public void onMessageReceived(MessageEvent messageEvent) {
 
-        if (messageEvent.getPath().equals(MESSAGE_RECEIVED_PATH)) {
-          final String message = new String(messageEvent.getData());
-          Log.v("myTag", "Message path received on watch is: " + messageEvent.getPath());
-          Log.v("myTag", "Message received on watch is: " + message);
-        }
-        else {
-          super.onMessageReceived(messageEvent);
-        }
-      }  
-    }
+          if (messageEvent.getPath().equals(MESSAGE_RECEIVED_PATH)) {
+            final String message = new String(messageEvent.getData());
+            Log.v("myTag", "Message path received on watch is: " + messageEvent.getPath());
+            Log.v("myTag", "Message received on watch is: " + message);
+          }
+          else {
+            super.onMessageReceived(messageEvent);
+          }
+        }  
+      }
 
 Forward Message to the Main Activity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
