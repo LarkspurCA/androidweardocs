@@ -8,7 +8,7 @@ Android wearable devices have an Android operating system, so you can develop  a
 Android Studio creates a very simple "Hello World" wearable app when you use the new project wizard. If you select Wearable as an option, the wizard creates both a handheld and a wearable app. Typically you install and launch this app using Android SDK tools.
 
 Voice Activation
-------------------	
+------------------
 
 An easy way to launch a wearable app is with a voice command. Either say "OK Google" or touch the screen. At the "Speak Now" prompt tell Google to start your app, for example  "start first wearable". The wearable then confirms your voice command and launches the the app.
 
@@ -16,7 +16,7 @@ An easy way to launch a wearable app is with a voice command. Either say "OK Goo
       :scale: 70
 	  
 Menu Activation
------------------	  
+-----------------
 
 To manually launch the app, touch the watch face and scroll to the last action, which is "Start...". Then select your app from the list of installed apps, in this case First_Wearable. 
 

@@ -46,8 +46,6 @@ To send a message , update the code in the main Activity of the sending device.
       GoogleApiClient.OnConnectionFailedListener {
 
       GoogleApiClient googleClient;
-      private static final String MESSAGE_RECEIVED_PATH = "/message_received_path";
-      private static final String MESSAGE = "Hello wearable\n Via the data layer";
 
       @Override
       protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +63,7 @@ To send a message , update the code in the main Activity of the sending device.
 	  ...
     } 
 
-2. Add callback methods for the data layer and lifecycle events. 
+2. Add callback methods for the data layer and lifecycle events. For simplicity, send a message in the onConnected callback method.
 
   .. code-block:: java
   
@@ -79,8 +77,10 @@ To send a message , update the code in the main Activity of the sending device.
       // Send a message when the data layer connection is successful.
       @Override
       public void onConnected(Bundle connectionHint) {
-	    sendDataLayerMessage();
-      }
+        String message = "Hello wearable\n Via the data layer";
+        //Requires a new thread to avoid blocking the UI
+        new SendToDataLayerThread("/message_path", message).start();
+       }
 	  
       // Disconnect from the data layer when the Activity stops
       @Override
@@ -91,35 +91,45 @@ To send a message , update the code in the main Activity of the sending device.
           super.onStop();
       }	  
 	  
-3. Add onConnectionSuspended and onConnectionFailed callbacks. For now they can be placeholders.  
-
-4. Add a method that sends a message to all nodes currently connected to the data layer. This task can block the main UI thread, so it must run in a new thread. 
+3. Add onConnectionSuspended and onConnectionFailed callbacks. For now they can be placeholders.
 
   .. code-block:: java
   
-    private void sendDataLayerMessage() {
-      new Thread(new Runnable() {
-        @Override
-        public void run() {
-          // Get the connected nodes and wait for results
-          NodeApi.GetConnectedNodesResult nodes = Wearable.NodeApi.getConnectedNodes(googleClient).await();
-          for (Node node : nodes.getNodes()) {
-            // Send a message and wait for result
-            SendMessageResult result =
-              Wearable.MessageApi.sendMessage(googleClient, node.getId(),
-              MESSAGE_RECEIVED_PATH, MESSAGE.getBytes()).await();
-              if (result.getStatus().isSuccess()) {
-                Log.v("myTag", "Message sent to : " + node.getDisplayName());
-              }
-              else {
-                // Log an error
-                Log.v("myTag", "MESSAGE ERROR: failed to send Message");
-              }
-           }
+    @Override
+    public void onConnectionSuspended(int cause) { }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) { }
+
+4. Define a class that extends Thread and includes a method that sends your message to all nodes currently connected to the data layer. This task can block the main UI thread, so it must run in a new thread. 
+
+  .. code-block:: java
+  
+    class SendToDataLayerThread extends Thread {
+      String path;
+      String message;
+
+      // Constructor to send a message to the data layer
+      SendToDataLayerThread(String p, String msg) {
+        path = p;
+        message = msg;
+      }
+
+      public void run() {
+        NodeApi.GetConnectedNodesResult nodes = Wearable.NodeApi.getConnectedNodes(googleClient).await();
+        for (Node node : nodes.getNodes()) {
+          SendMessageResult result = Wearable.MessageApi.sendMessage(googleClient, node.getId(), path, message.getBytes()).await();
+          if (result.getStatus().isSuccess()) {
+            Log.v("myTag", "Message: {" + message + "} sent to: " + node.getDisplayName());
+          }
+          else {
+            // Log an error
+            Log.v("myTag", "ERROR: failed to send Message");
+          }
         }
-      }).start();
+      }
     }
-	  
+
 Add a Message Receiver
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -140,18 +150,16 @@ You can monitor the data layer for new messages using either a listener service 
       </service>
     </application>
 
-2. Create a listener that extends the WearableListenerService. This example logs any received message to the debug output.
+2. Create a listener in the wear application that extends the WearableListenerService. This example logs any received message to the debug output.
 
   .. code-block:: java
   
       public class ListenerService extends WearableListenerService {
-	  
-        private static final String MESSAGE_RECEIVED_PATH = "/message_received_path";
 
         @Override
         public void onMessageReceived(MessageEvent messageEvent) {
 
-          if (messageEvent.getPath().equals(MESSAGE_RECEIVED_PATH)) {
+          if (messageEvent.getPath().equals("/message_path")) {
             final String message = new String(messageEvent.getData());
             Log.v("myTag", "Message path received on watch is: " + messageEvent.getPath());
             Log.v("myTag", "Message received on watch is: " + message);
@@ -167,27 +175,27 @@ Forward Message to the Main Activity
 
 The message listener might need to forward received messages to a component of the application that is running on a different thread. The LocalBroadcastManager can be useful in these cases. This procedure shows how the LocalBroadcastManager can forward received messages to the main Activity, for display in the UI.
 
-1. In the wearable listener service, send a local broadcast that contains the message.
+1. In the wearable listener service, broadcast the received message locally.
 
   .. code-block:: java
   
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
 
-      if (messageEvent.getPath().equals(MESSAGE_RECEIVED_PATH)) {
+        if (messageEvent.getPath().equals("/message_path")) {
+          final String message = new String(messageEvent.getData());
 
-        // Broadcast message to wearable activity for display
-        Intent messageIntent = new Intent();
-        messageIntent.setAction("message-forwarded-from-data-layer");
-        messageIntent.putExtra("message", message);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(messageIntent);
+          // Broadcast message to wearable activity for display
+          Intent messageIntent = new Intent();
+          messageIntent.setAction(Intent.ACTION_SEND);
+          messageIntent.putExtra("message", message);
+          LocalBroadcastManager.getInstance(this).sendBroadcast(messageIntent);
         }
-      else {
-        super.onMessageReceived(messageEvent);
-      }
-    }
-	
-2. In the main Activity, register a local broadcast receiver in onCreate method. This receiver filters incoming broadcasts for those that contain messages from the data layer.
+        else {
+            super.onMessageReceived(messageEvent);
+        }
+
+2. In the main wear Activity, register a local broadcast receiver in onCreate method. This receiver filters incoming broadcasts for those from the data layer.
 
   .. code-block:: java
 
@@ -196,13 +204,13 @@ The message listener might need to forward received messages to a component of t
         // Basic UI code, generated by New Project wizard.
 		...
 
-        // Register a local broadcast receiver, defined is Step 3.
-        IntentFilter messageFilter = new IntentFilter("message-forwarded-from-data-layer");
-        MessageReceiver messageReceiver= new MessageReceiver();
+        // Register the local broadcast receiver, defined in step 3.
+        IntentFilter messageFilter = new IntentFilter(Intent.ACTION_SEND);
+        MessageReceiver messageReceiver = new MessageReceiver();
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
       }
 	
-3. In the main Activity, define a broadcast receiver class that extracts the message from the broadcast and  displays the message text the UI.
+3. In the main wear Activity, define a class that extends broadcast receiver, implements the onReceive method, and extracts the message. This example displays the message in the wearable UI.
 
 	  .. code-block:: java
 

@@ -20,6 +20,7 @@ Contents:
    demand.rst
    wearable.rst
    sync.rst
+   data.rst
    contact.rst
 
 Indices and tables
