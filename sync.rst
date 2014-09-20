@@ -101,7 +101,7 @@ To send a message , update the code in the main Activity of the sending device.
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) { }
 
-4. Define a class that extends Thread and includes a method that sends your message to all nodes currently connected to the data layer. This task can block the main UI thread, so it must run in a new thread. 
+4. Define a class that extends the Thread class and implements a method that sends your message to all nodes currently connected to the data layer. This task can block the main UI thread, so it must run in a new thread. 
 
   .. code-block:: java
   
@@ -218,7 +218,7 @@ The message listener might need to forward received messages to a component of t
 	        @Override
 	        public void onReceive(Context context, Intent intent) {
 	          String message = intent.getStringExtra("message");
-			  // Display message in UI
+	          // Display message in UI
 	          mTextView.setText(message);
 	        }
 	      }
