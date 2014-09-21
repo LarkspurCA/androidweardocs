@@ -67,41 +67,38 @@ To send a message , update the code in the main Activity of the sending device.
 
   .. code-block:: java
   
-      // Connect to the data layer when the Activity starts
-      @Override
-      protected void onStart() {
-	    super.onStart();
-        googleClient.connect();
-      }
+    // Connect to the data layer when the Activity starts
+    @Override
+    protected void onStart() {
+	  super.onStart();
+      googleClient.connect();
+    }
 	  	  
-      // Send a message when the data layer connection is successful.
-      @Override
-      public void onConnected(Bundle connectionHint) {
-        String message = "Hello wearable\n Via the data layer";
-        //Requires a new thread to avoid blocking the UI
-        new SendToDataLayerThread("/message_path", message).start();
-       }
+    // Send a message when the data layer connection is successful.
+    @Override
+    public void onConnected(Bundle connectionHint) {
+      String message = "Hello wearable\n Via the data layer";
+      //Requires a new thread to avoid blocking the UI
+      new SendToDataLayerThread("/message_path", message).start();
+     }
 	  
-      // Disconnect from the data layer when the Activity stops
-      @Override
-      protected void onStop() {
-        if (null != googleClient && googleClient.isConnected()) {
-          googleClient.disconnect();
-          }
-          super.onStop();
-      }	  
+    // Disconnect from the data layer when the Activity stops
+    @Override
+    protected void onStop() {
+      if (null != googleClient && googleClient.isConnected()) {
+        googleClient.disconnect();
+        }
+        super.onStop();
+    }	  
 	  
-3. Add onConnectionSuspended and onConnectionFailed callbacks. For now they can be placeholders.
-
-  .. code-block:: java
-  
+    // Placeholders for required connection callbacks
     @Override
     public void onConnectionSuspended(int cause) { }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) { }
 
-4. Define a class that extends the Thread class and implements a method that sends your message to all nodes currently connected to the data layer. This task can block the main UI thread, so it must run in a new thread. 
+3. Define a class that extends the Thread class and implements a method that sends your message to all nodes currently connected to the data layer. This task can block the main UI thread, so it must run in a new thread. 
 
   .. code-block:: java
   
@@ -154,21 +151,23 @@ You can monitor the data layer for new messages using either a listener service 
 
   .. code-block:: java
   
-      public class ListenerService extends WearableListenerService {
+    public class ListenerService extends WearableListenerService {
 
-        @Override
-        public void onMessageReceived(MessageEvent messageEvent) {
+      @Override
+      public void onMessageReceived(MessageEvent messageEvent) {
 
-          if (messageEvent.getPath().equals("/message_path")) {
-            final String message = new String(messageEvent.getData());
-            Log.v("myTag", "Message path received on watch is: " + messageEvent.getPath());
-            Log.v("myTag", "Message received on watch is: " + message);
-          }
-          else {
-            super.onMessageReceived(messageEvent);
-          }
-        }  
-      }
+        if (messageEvent.getPath().equals("/message_path")) {
+          final String message = new String(messageEvent.getData());
+          Log.v("myTag", "Message path received on watch is: " + messageEvent.getPath());
+          Log.v("myTag", "Message received on watch is: " + message);
+        }
+        else {
+          super.onMessageReceived(messageEvent);
+        }
+      }  
+    }
+
+.. _forward:
 
 Forward Message to the Main Activity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
