@@ -152,17 +152,15 @@ You can monitor the data layer for new data objects using either a listener serv
     public class ListenerService extends WearableListenerService {
 
       @Override
-      public void ondataReceived(DataEvent dataEvent) {
+      public void onDataChanged(DataEventBuffer dataEvents) {
 
-        if (dataEvent.getPath().equals("/data")) {
-          final String data = new String(data Event.getData());
-          Log.v("myTag", "data path received on watch is: " + dataEvent.getPath());
-          Log.v("myTag", "data received on watch is: " + data);
+      DataMap dataMap;
+      for (DataEvent event : dataEvents) {
+        if (event.getType() == DataEvent.TYPE_CHANGED) {
+          dataMap = DataMapItem.fromDataItem(event.getDataItem()).getDataMap();
+          Log.v("myTag", "DataMap received on watch: " + dataMap);
         }
-        else {
-          super.ondataReceived(dataEvent);
-        }
-      }  
+      }
     }
 	
 Using Received Data
