@@ -19,6 +19,20 @@ If you have not already done so, :ref:`newapp`. The new project wizard in Androi
 
 Data layer transfers can originate from either a handheld or wearable. For bidirectional data both the handheld and wearable should implement the code in this section.
 
+Add Metadata for Google Play Services
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+Add Google Play services metadata statement to the manifest of the sending device:
+
+  .. code-block:: java
+  
+    <application>
+    ...
+      <meta-data android:name="com.google.android.gms.version"
+       android:value="@integer/google_play_services_version" />
+    </application>
+  
+
 Add a Data Sender
 ^^^^^^^^^^^^^^^^^^
 

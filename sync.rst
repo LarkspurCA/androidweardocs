@@ -32,6 +32,22 @@ Add build dependencies for the wearable support package and Google Play services
       compile 'com.google.android.gms:play-services-wearable:+'
     }
 	
+	
+Add Metadata for Google Play Services
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	
+Add Google Play services metadata statement to the manifest of the sending device:
+
+  .. code-block:: java
+  
+    <application>
+    ...
+      <meta-data android:name="com.google.android.gms.version"
+       android:value="@integer/google_play_services_version" />
+    </application>
+  
+The example code in this section sends messages from the handheld device.
+
 Add a Message Sender
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -222,6 +238,8 @@ The message listener might need to forward received messages to a component of t
 	        }
 	      }
 	    }
+		
+Keep in mind that this example is not a full implementation. You must unregister your application from the local broadcast manager when the application stops.  Otherwise you can duplicate the registration of the same application, which results in duplicate local broadcasts.
 		
 Try the First Data Layer App
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
