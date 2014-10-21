@@ -1,7 +1,7 @@
 Wearable Data Sync
-================
+===================
 
-By Michael Hahn, September 2014
+By Michael Hahn, October 2014
 
 The wearable data layer can sync either messages or data. A message contains a single text string, but data is typically wrapped in a DataMap object. A DataMap is similar to a Bundle in that it contains a collection of of one or more of data types, stored as key/value pairs. Android uses a Bundle to encapsulate data exchanged between activities. Similarly, wearable apps can use a DataMap to encapsulate the data exchanged over the wearable data layer. 
 
@@ -64,7 +64,7 @@ To send a data object , update the code in the main Activity of the sending devi
 	  ...
     } 
 
-2. Add callback methods for the data layer and lifecycle events. For simplicity, send a data object in the onConnected callback method.
+2. Add callback methods for the data layer and lifecycle events. For simplicity, send a data object in the onConnected callback method. In this example the path of the data object is "\wearable_data" and the data is a DataMap object that contains a golf course hole number and the distances to the front, middle, and back pin locations. The receiving side can use the path to identify the origin of the data.
 
   .. code-block:: java
   
@@ -75,9 +75,12 @@ To send a data object , update the code in the main Activity of the sending devi
       googleClient.connect();
     }
 	  	  
-    // Send a data object when the data layer connection is successful.
+    // Send a data object when the data layer connection is successful. 
+	
     @Override
     public void onConnected(Bundle connectionHint) {
+      
+      String WEARABLE_DATA_PATH = "/wearable_data";
 	
       // Create a DataMap object and send it to the data layer
       DataMap dataMap = new DataMap();
@@ -87,7 +90,7 @@ To send a data object , update the code in the main Activity of the sending devi
       dataMap.putString("middle", "260");
       dataMap.putString("back", "270");
       //Requires a new thread to avoid blocking the UI
-      new SendToDataLayerThread("/data", dataMap).start();
+      new SendToDataLayerThread("WEARABLE_DATA_PATH, dataMap).start();
      }
 	  
     // Disconnect from the data layer when the Activity stops
@@ -159,20 +162,28 @@ You can monitor the data layer for new data objects using either a listener serv
       </service>
     </application>
 
-2. Create a listener in the wear application that extends the WearableListenerService. This example logs any received data objects to the debug output. 
+2. Create a listener in the wear application that extends the WearableListenerService and implements onDataChanged. This example filters incoming data events for those of TYPE_CHANGED, checks for a data path of "/wearable_data", then logs the data item to the debug output. 
 
   .. code-block:: java
   
     public class ListenerService extends WearableListenerService {
+	
+      private static final String WEARABLE_DATA_PATH = "/wearable_data";
 
       @Override
       public void onDataChanged(DataEventBuffer dataEvents) {
 
       DataMap dataMap;
       for (DataEvent event : dataEvents) {
+
+        // Check the data type
         if (event.getType() == DataEvent.TYPE_CHANGED) {
-          dataMap = DataMapItem.fromDataItem(event.getDataItem()).getDataMap();
-          Log.v("myTag", "DataMap received on watch: " + dataMap);
+          // Check the data path
+          String path = event.getDataItem().getUri().getPath();
+          if (path.equals(WEARABLE_DATA_PATH)) {}
+            dataMap = DataMapItem.fromDataItem(event.getDataItem()).getDataMap();
+            Log.v("myTag", "DataMap received on watch: " + dataMap);
+          }
         }
       }
     }
@@ -180,4 +191,4 @@ You can monitor the data layer for new data objects using either a listener serv
 Using Received Data
 ^^^^^^^^^^^^^^^^^^^^^
 	
-In this example, a background service receives the data. If you need this data in the UI or elsewhere, you can broadcast the results locally, as described in :ref:`forward`. Just add a Bundle (DataMap.toBundle) as the intent extra, instead of the message string.
+In this example, a background service receives the data. If you need this data in the UI or elsewhere, you can broadcast the results locally, as described in :ref:`forward`. Just add a Bundle (DataMap.toBundle) as the intent extra, instead of a simple message string.

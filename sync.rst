@@ -32,7 +32,6 @@ Add build dependencies for the wearable support package and Google Play services
       compile 'com.google.android.gms:play-services-wearable:+'
     }
 	
-	
 Add Metadata for Google Play Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	
