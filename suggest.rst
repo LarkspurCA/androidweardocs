@@ -89,7 +89,7 @@ Modify the Handheld Activity
 
   .. code-block:: java
 	  
-    NotificationCompat.Builder notificationBuilder =
+    Notification notification =
       new NotificationCompat.Builder(this)
          .setSmallIcon(R.drawable.ic_launcher)
           .setContentTitle("Hello Android Wear")
