@@ -15,12 +15,12 @@ The Android Wear app demonstrates this core function for messages. When new emai
 First Android Wear Demand
 --------------------------
 
-If you have not already done so, :ref:`newapp` and :ref:`dependencies`. The new project wizard in Android Studio beta creates a project with two main activities, one for the handheld device and another for the wearable. To create your first demand, add code in the handheld activity only, located in the "mobile" branch of the project hierarchy. The software preinstalled on a wearable device or emulator handles the task of receiving and displaying notifications from the handheld.
+If you have not already done so, :ref:`newapp` and :ref:`dependencies`. The new project wizard in Android Studio beta creates a project with two main activities, one for the handheld device and another for the wearable. To create your first demand, add code in the handheld activity only, located in the "mobile" branch of the project hierarchy. The software preinstalled on a wearable device or emulator handles the task of receiving and displaying notifications on the wearable.
 
 Modify the Handheld Activity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Your handheld activity must create a notification that includes a wearable action (demand). This action includes an intent that the wearable invokes when a user selects the demand, along with optional data such as a voice response from the user. You build the notification with a hierarchy of objects, intent -> pending intent -> notification action -> wearable extender, and finally the notification itself. 
+Your handheld activity creates a notification that includes a wearable action (demand). This action includes an intent that the wearable invokes when a user selects the demand, along with optional data such as a voice response from the user. You build the notification with a hierarchy of objects, intent -> pending intent -> notification action -> wearable extender, and finally the notification itself. 
 
 1. Create an Intent that defines the action that the handheld device should take in response to a wearable action (demand). 
 
@@ -37,6 +37,9 @@ Your handheld activity must create a notification that includes a wearable actio
    The following example shows how to create the intent for a reply.
 
   .. code-block:: java
+  
+    String ACTION_DEMAND = "com.androidweardocs.ACTION_DEMAND";
+    String EXTRA_MESSAGE = "com.androidweardocs.EXTRA_MESSAGE";
 
     Intent demandIntent = new Intent(this, DemandIntentReceiver.class)
       .putExtra(EXTRA_MESSAGE, “Reply selected.")
@@ -46,14 +49,12 @@ Your handheld activity must create a notification that includes a wearable actio
 
   A PendingIntent wraps the intent to grant the privileges needed for it to execute in your application. It contains the context of your activity, service, or broadcast receiver and the Intent object itself. 
 
-  The following example creates a pending intent for a broadcast receiver.
-
   .. code-block:: java
 
     PendingIntent demandPendingIntent =
         PendingIntent.getActivity(this, 0, demandIntent, 0);
 
-3. Optionally, create a remoteInput object to hold a voice reply from the wearable device. A voice request or response is a common action for a user because of the small size of the wearable UI.
+3. Optionally, create a RemoteInput object to hold a voice reply from the wearable device. A voice request or response is a common action for a user because of the small size of the wearable UI.
 
   .. code-block:: java
   
@@ -64,7 +65,7 @@ Your handheld activity must create a notification that includes a wearable actio
 	  
 4. Create a wearable action.
 
-  The following example creates an action for the notification that uses a standard reply icon and label, and adds the pending intent and remote input from previous steps.
+  The following example creates an action for the notification that uses a standard reply icon and label, adds the pending intent, and the optional remote input for voice.
 
   .. code-block:: java
   
@@ -86,7 +87,7 @@ Your handheld activity must create a notification that includes a wearable actio
 
   .. code-block:: java
 
-     Notification notify =
+     Notification notification =
        new NotificationCompat.Builder(this)
          .setContentTitle("Hello Wearable!")
          .setContentText("First Wearable notification.")
