@@ -1,3 +1,6 @@
+.. _datalayer:
+
+
 Wearable Data Layer
 ================================
 

@@ -1,3 +1,5 @@
+.. _demand:
+
 Android Wear Demand
 ===================
 
@@ -54,7 +56,7 @@ Your handheld activity creates a notification that includes a wearable action (d
     PendingIntent demandPendingIntent =
         PendingIntent.getActivity(this, 0, demandIntent, 0);
 
-3. Optionally, create a RemoteInput object to hold a voice reply from the wearable device. A voice request or response is a common action for a user because of the small size of the wearable UI.
+3. Create a RemoteInput object to hold a voice reply from the wearable device. A voice request or response is a common action for a user because of the small size of the wearable UI.
 
   .. code-block:: java
   
@@ -65,7 +67,7 @@ Your handheld activity creates a notification that includes a wearable action (d
 	  
 4. Create a wearable action.
 
-  The following example creates an action for the notification that uses a standard reply icon and label, adds the pending intent, and the optional remote input for voice.
+  The following example creates an action for the notification that uses a standard reply icon and label, adds the pending intent, and the remote input for voice.
 
   .. code-block:: java
   
