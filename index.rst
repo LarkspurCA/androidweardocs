@@ -23,6 +23,7 @@ Contents:
    wearable.rst
    sync.rst
    data.rst
+   gps.rst
    contact.rst
 
 Indices and tables

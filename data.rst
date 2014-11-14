@@ -38,7 +38,7 @@ Add a Data Sender
 
 To send a data object , update the code in the main Activity of the sending device.
 
-1. Build a GoogleApiClient. 
+1. Build a Google Play Services client that includes the Wearable API. 
 
   .. code-block:: java
   
