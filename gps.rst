@@ -121,9 +121,14 @@ Add a Location Listener
 
 Verify GPS Sensor
 -------------------
-This simple example works for wearables that have a GPS sensor whether they are paired with a handheld or not. It also works for wearables without GPS when they are paired with a handheld. A complete wearable implementation verifies the presence of a GPS sensor and pairing status before working with location services. For example, you can verify the presence of a GPS sensor as follows:
+This simple example works for all wearables, with or without a GPS sensor. Those without GPS must pair with a handheld to get location updates. A more complete implementation verifies the presence of a GPS sensor and pairing status before using location services, and warns users or reduces functionality when necessary. You can verify the presence of a GPS sensor as follows:
 
   .. code-block:: java
   
     getPackageManager().hasSystemFeature(PackageManager.FEATURE_LOCATION_GPS
 	
+
+Example
+--------
+
+The working example for wearable GPS is at https://github.com/LarkspurCA/WearableGPS.
