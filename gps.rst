@@ -107,17 +107,29 @@ Add a Location Listener
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) { }
 
-3. Implement LocationListener callback for location updates.
+3. Implement the LocationListener callback for location updates.
 
   .. code-block:: java
   
     @Override
     public void onLocationChanged(Location location){
-        // Log the location latitude and longitude, and
-       // display the longitude value in the wearable display
-        Log.v("myTag", "Latitude: " + location.getLatitude() + ", Longitude: " + location.getLongitude());
-        mTextView.setText("Lat: " + String.valueOf( location.getLatitude()));
+   
+        // Display the latitude and longitude in the UI
+        mTextView.setText("Latitude:  " + String.valueOf( location.getLatitude()) +
+                          "\nLongitude:  " + String.valueOf( location.getLongitude()));
     }
+
+This code displays the current latitude and longitude in the wearable UI. When the wearable is paired with the handheld the  location if from the handheld GPS.
+
+   .. figure:: images/offboardGPS.png
+      :scale: 50	
+
+When the wearable is not paired with the handheld the, for example when you leave the wearable behind to exercise, the GPS automatically switches to the onboard GPS.
+
+   .. figure:: images/onboardGPS.png
+      :scale: 50	
+	
+This screen is from the SmartWatch 3. You can tell that the GPS switched because of the number of digits displayed. When you return and repair with the handheld, the GPS automatically switches back to the handheld and the display returns to the original one.
 
 Verify GPS Sensor
 -------------------
