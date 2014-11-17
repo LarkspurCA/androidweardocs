@@ -119,17 +119,17 @@ Add a Location Listener
                           "\nLongitude:  " + String.valueOf( location.getLongitude()));
     }
 
-This code displays the current latitude and longitude in the wearable UI. When the wearable is paired with the handheld the  location if from the handheld GPS.
+This example displays the current latitude and longitude in the wearable UI. The location is from the handheld GPS.
 
    .. figure:: images/offboardGPS.png
       :scale: 50	
 
-When the wearable is not paired with the handheld the, for example when you leave the wearable behind to exercise, the GPS automatically switches to the onboard GPS.
+When the wearable is not paired with the handheld, for example when you leave the wearable behind to exercise, the GPS automatically switches to the onboard GPS.
 
    .. figure:: images/onboardGPS.png
       :scale: 50	
 	
-This screen is from the SmartWatch 3. You can tell that the GPS switched because of the number of digits displayed. When you return and repair with the handheld, the GPS automatically switches back to the handheld and the display returns to the original one.
+This screen capture is from the Sony SmartWatch 3. The number of digits displayed is greater now, providing a visual clue that the wearable GPS is active. When you return and re-pair with the handheld, the GPS automatically switches back to the handheld and the display returns to its original format.
 
 Verify GPS Sensor
 -------------------
