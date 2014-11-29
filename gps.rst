@@ -75,15 +75,15 @@ Add a Location Listener
     public void onConnected(Bundle connectionHint) {
       
       // Create the LocationRequest object
-       locationRequest = LocationRequest.create();
-       // Use high accuracy
-       locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-       // Set the update interval to 2 seconds
-       locationRequest.setInterval(2);
-       // Set the fastest update interval to 2 seconds
-       locationRequest.setFastestInterval(2);
-       // Set the minimum displacement
-       locationRequest.setSmallestDisplacement(2);
+      LocationRequest locationRequest = LocationRequest.create();
+      // Use high accuracy
+      locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+      // Set the update interval to 2 seconds
+      locationRequest.setInterval(2);
+      // Set the fastest update interval to 2 seconds
+      locationRequest.setFastestInterval(2);
+      // Set the minimum displacement
+      locationRequest.setSmallestDisplacement(2);
          
        // Register listener using the LocationRequest object
        LocationServices.FusedLocationApi.requestLocationUpdates(googleClient, locationRequest, this);
