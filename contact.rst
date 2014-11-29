@@ -1,10 +1,10 @@
 Contact Us
 ==========
 
-Android Ware Docs, Larkspur, CA
+Android Wear Docs
  
 415 924-7733
 
 mike@androidweardocs.com
 
-@larkspurca
+@DroidWearDocs
