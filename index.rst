@@ -9,7 +9,7 @@ Android Wear is the Google API for smart watches, Google Glass, and other wearab
 
 Android 4.4 (KitKat) for handheld and wearable devices was introduced at Google I/O 2014, along with an Android Studio update that included features specific to wearables. Since then, Google has released Android 5.0 (Lollipop), which adds additional wearable capabilities. 
 
-If you are new to Android Wear you first need to learn how to present timely and concise information on the small screen of a wearable, and then become familiar with the software and tools that make it all possible. Then site helps developers quickly work through the basic concepts and then develop their first wearable app. This site focuses on the Android 4.4W SDK for now.
+If you are new to Android Wear you first need to learn how to present timely and concise information on the small screen of a wearable, and then become familiar with the software and tools that make it all possible. This site helps developers quickly work through the basic concepts and develop their first wearable app.
 
 Contents:
 
