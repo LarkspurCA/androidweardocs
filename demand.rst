@@ -54,7 +54,7 @@ Your handheld activity creates a notification that includes a wearable action (d
   .. code-block:: java
 
     PendingIntent demandPendingIntent =
-        PendingIntent.getActivity(this, 0, demandIntent, 0);
+        PendingIntent.getBroadcast(this, 0, demandIntent, 0); // as we are registering Broadcast Receiver, we have to use getBroadcast method if it is Activity than we have to use getActivity
 
 3. Create a RemoteInput object to hold a voice reply from the wearable device. A voice request or response is a common action for a user because of the small size of the wearable UI.
 
