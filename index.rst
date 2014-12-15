@@ -3,7 +3,7 @@ Welcome to Android Wear Docs!
 
 **What is Android Wear?**
 
-By Michael Hahn, October 2014
+By Michael Hahn, December 2014
 
 Android Wear is the Google API for smart watches, Google Glass, and other wearable devices. These wearables work in conjunction with an Android smartphone to put useful information at your fingertips. The first Android watches were the Motorola 360,  LG's G watch, and the Samsung Gear Live. Now a new generation of watches are becoming available, including the Sony SmartWatch 3, that provide full GPS and other features like offline music. This means you can now use the watch for common activities, like exercise or navigation, even when it is not paired with your phone. More wearables are coming soon, all of which address the limitations of early devices.
 
