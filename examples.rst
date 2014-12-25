@@ -3,31 +3,35 @@
 What About the Sample Apps?
 ===========================
 
-By
- Michael Hahn, June 2014
+By Michael Hahn, December 2014
 
-The Android Wear SDK includes many sample applications, including the following:  
+Google provides a variety of sample applications for wearables that demonstrate the basic capabilities of Android Wear.  All are Android Studio projects that you can download, compile, and run on a wearable. This section provides an introduction to the following examples.
+
 
 * ElizaChat
 * RecipeAssistant
-* WearableNotificationsSample
+* Notifications
 
-Open and Launch an Example App
--------------------------------
 
-This section explains how to open and run any of the sample apps. You need an Android development environment (Android Studio here), your own handheld device running the Android Wear App, and either an Android Wear device or emulator.
-
-To launch Android Wear samples:
+Open a Sample Project in Android Studio
+----------------------------------------
 
 #. If you have not already done so, :ref:`setup`.
-#. Start Android Studio.
-#. Select **Open Project** from the **File** Menu.
-#. Navigate to the desired sample project, select the ``gradle.build`` file, and click **OK**.
-#. Verify that the project opens without errors.
-#. :ref:`start` on your Android Device.
-#. In Android Studio, select **Run** to install the sample app on your handheld device. When prompted to choose a device, make sure to select your handheld device, not the Android Wear emulator.
+#. Start Android Studio. The Welcome screen is displayed.
+#. Select **Import an Android code sample** from the Quick Start panel. The Browse Samples page is displayed.
+#. Select the desired sample from the list of samples.
+#. Click **Next**. The Sample Setup page is displayed.
+#. Accept the defaults and click **Finish**.
+#. Verify that the project opens without errors. Sometimes you need to install or update sdk packages.
+#. Start the Android Wear companion app on your Android handheld, if necessary.
 
-   The sample app opens on your handheld device. If you hare having problems, make sure  the Android Wear App is running and connected to the Android Wear emulator.
+Launch the Sample App or Service
+---------------------------------
+
+#. Select **Application** in the toolbar.
+#. Select **Run**. If the sample has a default Activity, it is started.
+#. If the sample does not have a default activity, the Run/Debug Configuration dialog is displayed. Select **Do Not Launch Activity**, then click **OK**. 
+#. When prompted to choose a device, select your handheld device.
 
 Try Eliza Chat
 ---------------
