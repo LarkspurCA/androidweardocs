@@ -7,7 +7,7 @@ By Michael Hahn, December 2014
 
 Google provides a variety of sample applications for wearables that demonstrate the basic capabilities of Android Wear.  All are Android Studio projects that you can download, compile, and run on a wearable. This section provides an introduction to the following examples.
 
-
+* Watchface
 * ElizaChat
 * RecipeAssistant
 * Notifications
@@ -28,10 +28,48 @@ Open a Sample Project in Android Studio
 Launch the Sample App or Service
 ---------------------------------
 
+Handheld Code
+^^^^^^^^^^^^^^
+
 #. Select **Application** in the toolbar.
 #. Select **Run**. If the sample has a default Activity, it is started.
 #. If the sample does not have a default activity, the Run/Debug Configuration dialog is displayed. Select **Do Not Launch Activity**, then click **OK**. 
-#. When prompted to choose a device, select your handheld device.
+#. When prompted to choose a device, select your handheld device and click **OK**.
+#. Wait for the Application to fully compile and start.
+
+Wearable Code
+^^^^^^^^^^^^^^
+If the sample has Wearable code perform these steps.
+
+#. Select **Wearable** in the toolbar.
+#. Select **Run**. If the wearable has a default Activity, it is started.
+#. If the Wearable does not have a default activity, the Run/Debug Configuration dialog is displayed. Select **Do Not Launch Activity**, then click **OK**. 
+#. When prompted to choose a device, select your wearable device and click **OK**.
+
+Try the Watchface Sample
+-------------------------
+
+This sample installs six watch face samples. These include a variety of analog and digital time displays, including full-screen displays of the current time and split-screen displays of time and timely information. These samples are a starting point for developers interested in creating innovative new watch faces.
+
+The watch face sample consists of services only; it is not an application that you can launch from an icon. On the handheld, you view the sample watch faces in the opening page of the Android Wear companion app. 
+
+.. figure:: images/handheld-watchfaces.png
+    :scale: 25 %
+
+On the wearable, you view the sample watch faces in Settings, under the Change Watch Face. In the small screen, you must scroll through them one at at time.
+
+.. figure:: images/wearable-watchfaces.png
+    :scale: 25 %
+
+On both the handheld and wearable, watch faces display a gear icon if they have customizable settings. In the Android Wear companion app, selecting the sample digital watch face displays the following choices:
+
+.. figure:: images/handheld-watchface-settings.png
+    :scale: 25 %
+
+On the wearable, you can only choose a background color when you select the icon:
+
+.. figure:: images/wearable-watchface-settings.png
+    :scale: 25 %
 
 Try Eliza Chat
 ---------------
