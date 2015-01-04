@@ -17,7 +17,21 @@ The Android Wear app demonstrates this core function for messages. When new emai
 First Android Wear Demand
 --------------------------
 
-If you have not already done so, :ref:`newapp` and :ref:`dependencies`. The new project wizard in Android Studio beta creates a project with two main activities, one for the handheld device and another for the wearable. To create your first demand, add code in the handheld activity only, located in the "mobile" branch of the project hierarchy. The software preinstalled on a wearable device or emulator handles the task of receiving and displaying notifications on the wearable.
+If you have not already done so, :ref:`newapp`. The new project wizard in Android Studio beta creates a project with two main activities, one for the handheld device and another for the wearable. To create your first demand, add code in the handheld activity only, located in the "mobile" branch of the project hierarchy. The software preinstalled on a wearable device or emulator handles the task of receiving and displaying notifications on the wearable.
+
+.. _dependencies:
+
+Add Build Dependencies
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Add a build dependency for the wearable support package to the build.gradle (Module:mobile) file in Gradle Scripts folder, if necessary.  
+
+  .. code-block:: java
+  
+    dependencies {
+      compile fileTree(dir: 'libs', include: ['*.jar'])
+      compile 'com.google.android.support:wearable:+' 
+    }
 
 Modify the Handheld Activity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
