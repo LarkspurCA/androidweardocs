@@ -1,7 +1,7 @@
 Android Wear Suggest
 ====================
 
-By Michael Hahn, July 2014
+By Michael Hahn, January 2015
 
 The Suggest context stream is one of the core functions for Android Wear. It consists of a sequence of notifications about timely information, such as incoming messages or upcoming appointments. It can also display useful information about a task at hand, such as preparing a recipe or communicating with a digital assistant.
 
@@ -29,55 +29,44 @@ You do not have to rely any of these stock UI styles. You can create your own fu
 First Android Wear Suggest
 ---------------------------
 
-This section explains how to create your first Android Wear notification and add it to the Suggest context stream on an Android wearable, or emulator. The new project wizard in Android Studio beta creates a project with two main activities, one for the handheld device and another for the wearable. To create your first suggest notification, add code in the handheld activity only, located in the "mobile" branch of the project hierarchy. The preinstalled software on a wearable device or emulator handles the task of receiving and displaying notifications from the handheld.
+This section explains how to create your first Android Wear notification and add it to the Suggest context stream on an Android wearable, or emulator. The new project wizard in Android Studio creates a project with two main activities, one for the handheld device and another for the wearable. To create your first suggest notification, add code in the handheld activity only, located in the "mobile" branch of the project hierarchy. The preinstalled software on a wearable device or emulator handles the task of receiving and displaying notifications from the handheld.
 
 .. _newapp:
 
 Create a Project
 ^^^^^^^^^^^^^^^^^
 
-1. Launch Android Studio (Version 0.8 or later).
+This section explains how to create a new project using Android Studio Version 1. If you have an earlier version, update it before starting this procedure.
 
-2. Select New Project in the Welcome screen.
+1. Launch Android Studio.
 
-3. In the New Project dialog, enter your Application Name, Domain, and a project directory. Click Next.
+2. Select **Start a New Android Studio Project** in the Welcome screen.
 
-4. In the Form Factors dialog, select Phone and Tablet to create a handheld activity, and Wear to create a wearable activity. Keep the default SDKs, and then click Next.
+3. In the new project dialog, enter your Application Name, Domain, and a project directory. Click **Next**.
 
-5. In the Mobile dialog, select Blank Activity. Click Next.
+4. In the form factors dialog, select **Phone and Tablet** and **Wear**. Keep the default SDKs, and then click **Next**.
 
-6. In the Option dialog, enter the Activity Name, Layout Name, and Title for the handheld activity. Then click Next.
+5. In the mobile activity dialog, select **Blank Activity**. Click **Next**.
 
-7. In the Wear dialog, Select Blank Wear Activity. Then click Next.
+6. In the mobile option dialog enter an Activity Name for the handheld. Accept the defaults or the other fields and click **Next**. The name for an activity that generates a wearable "suggestion" might be SuggestActivity.
 
-8.  In the Options dialog, enter an Activity Name, Layout Name, Round Layout Name, and Rectangular Layout Name for the wearable activity. Click Finish.
+7. In the wear activity dialog, select **Blank Wear Activity**. Then click **Next**.
 
-.. _dependencies:
-
-Add Build Dependencies
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-Add a build dependency for the wearable support package to the build.gradle file. For Android Studio Beta, the correct file is within the "mobile" branch of the project hierarchy. 
-
-  .. code-block:: java
-  
-    dependencies {
-      compile fileTree(dir: 'libs', include: ['*.jar'])
-      compile 'com.google.android.support:wearable:+' 
-    }
+8.  In the wear options dialog enter an Activity Name for the wearable. Accept the defaults for the other fields and click **Finish**. You can use the same name for the wearable activity that you used for the handheld activity.
 
 Modify the Handheld Activity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.  Import the the packages that support wearable apps into the handheld Activity. As a minimum you need the following notification and remote input packages:
+1.  Import the the packages that support wearable features into the handheld Activity. As a minimum you need the following notification packages:
 
   .. code-block:: java
    
     import android.support.v4.app.NotificationManagerCompat;
     import android.support.v4.app.NotificationCompat;
     import android.support.v4.app.RemoteInput;
+    import android.app.Notification;
   
-2. Add Android Wearable features to a Wearable extender object, for example ShowBackgroundOnly.
+2. Add Android Wearable features to a Wearable extender object, for example ShowBackgroundOnly, to the onCreate method.
 
   .. code-block:: java
   
@@ -110,16 +99,19 @@ Modify the Handheld Activity
 
   .. code-block:: java
    
+    int notificationId = 1;
     notificationManager.notify(notificationId, notification);
-	
 
- .. figure:: images/hello-wearable.png
+
+.. figure:: images/hello-wearable.png
     :scale: 35
     :align: right
 	
 	
-The result of this example code is a notification with a title and body.
+The result of this example is a notification with a title and body. If necessary, scroll through other notifications to view this one.
 
-Before proceeding to more interesting wearable formats, it is worth learning how to add actions (Demands) to a notification.
+Example
+--------
 
+The full Android Studio project for this example is posted at https://github.com/LarkspurCA/WearableSuggest.
 
