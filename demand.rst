@@ -3,7 +3,7 @@
 Android Wear Demand
 ===================
 
-By Michael Hahn, July 2014
+By Michael Hahn, January 2015
 
 The Demand context is one of the core functions for Android Wear. A demand is displayed as a large icon, typically when you swipe a displayed suggestion (notification). You tap on an icon to perform the desired demand.
 
@@ -12,50 +12,53 @@ The Demand context is one of the core functions for Android Wear. A demand is di
     :scale: 40
     :align: right
 
-The Android Wear app demonstrates this core function for messages. When new email arrives, you swipe to the left to scroll through the demand icons, such as open, reply, and archive. You can create custom icons for your app as well. This section explains how to code your own wearable demand that handles a voice reply.
+When new email arrives for example, you swipe to the left to scroll through the demand icons, such as open, reply, and archive. You can create custom icons for your app as well. This section explains how to code your own wearable demand that handles a voice reply.
 
 First Android Wear Demand
 --------------------------
 
-If you have not already done so, :ref:`newapp`. The new project wizard in Android Studio beta creates a project with two main activities, one for the handheld device and another for the wearable. To create your first demand, add code in the handheld activity only, located in the "mobile" branch of the project hierarchy. The software preinstalled on a wearable device or emulator handles the task of receiving and displaying notifications on the wearable.
+If you have not already done so, :ref:`newapp`. The new project wizard in Android Studio creates a project with two main activities, one for the handheld device and another for the wearable. To create your first demand, add code in the handheld activity only, located in the "mobile" branch of the project hierarchy. The software preinstalled on a wearable device or emulator handles the task of displaying notifications and handling demands on the wearable side.
 
 .. _dependencies:
 
 Add Build Dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add a build dependency for the wearable support package to the build.gradle (Module:mobile) file in Gradle Scripts folder, if necessary.  
+Add build dependencies for the wearable support package to the build.gradle (Module:mobile) file in Gradle Scripts folder, if necessary.  
 
   .. code-block:: java
   
     dependencies {
       compile fileTree(dir: 'libs', include: ['*.jar'])
-      compile 'com.google.android.support:wearable:+' 
+      wearApp project(':wear')
+      compile 'com.android.support:appcompat-v7:21.+'
+      compile 'com.google.android.gms:play-services:6.5.+'
     }
 
 Modify the Handheld Activity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Your handheld activity creates a notification that includes a wearable action (demand). This action includes an intent that the wearable invokes when a user selects the demand, along with optional data such as a voice response from the user. You build the notification with a hierarchy of objects, intent -> pending intent -> notification action -> wearable extender, and finally the notification itself. 
+Your handheld activity initiates the process by creating a notification that includes an action (demand). When a user views the notification and invokes the demand, the wearable broadcasts the demand to the handheld for processing. You build the notification with a hierarchy of objects, intent -> pending intent -> notification action -> wearable extender, and finally the notification itself. 
 
-1. Create an Intent that defines the action that the handheld device should take in response to a wearable action (demand). 
+1. Create an Intent that defines the action that the handheld device should take in response to a wearable demand. 
 
    The Intent has the following parameters:
 
-   > The context of the activity, service, or broadcast receiver that is the intent target.
+   > The context of the activity, service, or broadcast receiver on the handheld that handles wearable demands.
    
-   > The name of the class that is the intent target.
+   > The name of the class on the handheld that receives wearable demands.
    
-   > An extra that provides intent details.
+   > A constant that specifies a demand action.
    
-   > The type of action requested.
+   > An extra with details about the requested action.
    
-   The following example shows how to create the intent for a reply.
-
+   The following example shows how to create an intent for a reply demand. The DemandIntentReceiver is defined later in :ref:`demandReceiver`.
+   
   .. code-block:: java
   
-    String ACTION_DEMAND = "com.androidweardocs.ACTION_DEMAND";
-    String EXTRA_MESSAGE = "com.androidweardocs.EXTRA_MESSAGE";
+    public static final String ACTION_DEMAND = "com.androidweardocs.ACTION_DEMAND";
+    public static final String EXTRA_MESSAGE = "com.androidweardocs.EXTRA_MESSAGE";
+	public static final String EXTRA_VOICE_REPLY = "com.androidweardocs.EXTRA_VOICE_REPLY";
 
     Intent demandIntent = new Intent(this, DemandIntentReceiver.class)
       .putExtra(EXTRA_MESSAGE, “Reply selected.")
@@ -63,14 +66,14 @@ Your handheld activity creates a notification that includes a wearable action (d
 
 2. Create a PendingIntent to include in the notification. 
 
-  A PendingIntent wraps the intent to grant the privileges needed for it to execute in your application. It contains the context of your activity, service, or broadcast receiver and the Intent object itself. 
+  A PendingIntent wraps the intent to grant the privileges it needs for to execute in your application. It contains the context of the activity, service, or broadcast receiver that will receive the demand, and the Intent object itself. This example creates a PendingIntent using the context of a broadcast receiver. Use getActivity instead of getBroadcast if your activity receives demands.
 
   .. code-block:: java
 
     PendingIntent demandPendingIntent =
-        PendingIntent.getBroadcast(this, 0, demandIntent, 0); // as we are registering Broadcast Receiver, we have to use getBroadcast method if it is Activity than we have to use getActivity
+        PendingIntent.getBroadcast(this, 0, demandIntent, 0);
 
-3. Create a RemoteInput object to hold a voice reply from the wearable device. A voice request or response is a common action for a user because of the small size of the wearable UI.
+3. Create a RemoteInput object to hold a voice reply from the wearable device. A voice request or response is a common action for a wearable device because of the small size of the UI.
 
   .. code-block:: java
   
@@ -81,7 +84,7 @@ Your handheld activity creates a notification that includes a wearable action (d
 	  
 4. Create a wearable action.
 
-  The following example creates an action for the notification that uses a standard reply icon and label, adds the pending intent, and the remote input for voice.
+  The following example creates an wearable action that uses a standard reply icon and label, adds the pending intent, and the RemoteInput object for voice.
 
   .. code-block:: java
   
@@ -99,14 +102,14 @@ Your handheld activity creates a notification that includes a wearable action (d
       new NotificationCompat.WearableExtender()
 	  .addAction(replyAction);
 
-6. Create a notification and extended it to include the wearable extender just created. The following example creates a notification that includes a reply action (demand).
+6. Create a notification and extended it with the wearable extender just created. The following example creates a notification that includes a reply action (demand).
 
   .. code-block:: java
 
      Notification notification =
        new NotificationCompat.Builder(this)
          .setContentTitle("Hello Wearable!")
-         .setContentText("First Wearable notification.")
+         .setContentText("First Wearable demand.")
          .setSmallIcon(R.drawable.ic_launcher)
          .extend(wearableExtender)
          .build();
@@ -118,16 +121,19 @@ Your handheld activity creates a notification that includes a wearable action (d
     NotificationManagerCompat notificationManager =
       NotificationManagerCompat.from(this);
 
-8. Dispatch the notification. 
+8. Dispatch the extended notification. 
 
   .. code-block:: java
    
+    int notificationId, notification;
     notificationManager.notify(notificationId, notification);
 	
-Create a Notification Receiver
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. _demandReceiver:
+	
+Create a Demand Receiver
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following example receives the wearable action and logs the contents as debug messages.
+When a user makes a demand, the wearable broadcasts an intent that contains the details. The handheld receives the broadcast and takes an appropriate action. The following example defines a BroadcastReceiver for a voice demand that simply logs the results.
 
   .. code-block:: java
   
@@ -173,5 +179,9 @@ The example DemandIntentReceiver receives the broadcasted intent and extracts th
     MyTag: Extra message from intent = Reply icon selected.
     MyTag: User reply from wearable: hello handheld
 
+Example
+--------
 
-	
+The full Android Studio project for demands is posted at https://github.com/LarkspurCA/WearableDemand.
+
+
