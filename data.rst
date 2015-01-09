@@ -90,7 +90,7 @@ To send a data object , update the code in the main Activity of the sending devi
       dataMap.putString("middle", "260");
       dataMap.putString("back", "270");
       //Requires a new thread to avoid blocking the UI
-      new SendToDataLayerThread("WEARABLE_DATA_PATH, dataMap).start();
+      new SendToDataLayerThread(WEARABLE_DATA_PATH, dataMap).start();
      }
 	  
     // Disconnect from the data layer when the Activity stops
