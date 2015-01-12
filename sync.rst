@@ -4,11 +4,11 @@
 Wearable Data Layer
 ================================
 
-By Michael Hahn, August 2014
+By Michael Hahn, January 2015
 
 An application that runs on a wearable device usually utilizes some of the capabilities of a paired handheld device. This means you need two separate Android apps, one that runs on the wearable and another that runs on the handheld. These two apps communicate with one another over the bluetooth link that connects the two devices. 
 
-Google Play services Version 5 includes a Wearable Message API that provides access to the data layer of a data communications link between the two devices. Messages or data move down the protocol stack on the sending side, across the bluetooth link, then up the stack on the receive side. The following diagram shows how a simple message flows through the wearable communications link.
+Google Play services Version 5 and later include a Wearable Message API that provides access to the data layer of a data communications link between the two devices. Messages or data move down the protocol stack on the sending side, across the bluetooth link, then up the stack on the receive side. The following diagram shows how a simple message flows through the wearable communications link.
 
   .. figure:: images/data-layer-stack.png
       :scale: 70
@@ -18,25 +18,30 @@ In this example, a handheld sends a message to a wearable using the sendMessage 
 First Wearable Message
 ------------------------
 
-If you have not already done so, :ref:`newapp`. The new project wizard in Android Studio beta creates a project with two main activities, one for the handheld device and another for the wearable. These two activities use the same package name, which is essential for the wearable data layer to work.
+If you have not already done so, :ref:`newapp`. The new project wizard in Android Studio creates a project with two main activities, one for the handheld device and another for the wearable. These two activities use the same package name, which is essential for the wearable data layer to work.
 
-Data layer messages can originate from either a handheld or wearable. For bidirectional messaging both the handheld and wearable should implement the code in this section.
+Data layer messages can originate from either a handheld or wearable. For bidirectional messaging both the handheld and wearable should implement a message sender and listener.
+
+Implement a Message Sender
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This section describes how to send messages to the data layer. The example code shown sends messages from the handheld to the data layer.
 
 Add Build Dependencies
-^^^^^^^^^^^^^^^^^^^^^^^^
+************************
 
-Add build dependencies for the wearable support package and Google Play services to the build.gradle file, if they are not already present. For Android Studio Beta, modify the build.gradle file in both the "mobile" and "wear" branches of the project hierarchy. 
+Add the following build dependencies to the build.gradle file (Module:mobile) in the Gradle Scripts folder, if necessary. 
 
   .. code-block:: java
   
     dependencies {
       compile fileTree(dir: 'libs', include: ['*.jar'])
-      compile 'com.google.android.support:wearable:+' 
-      compile 'com.google.android.gms:play-services-wearable:+'
+      compile 'com.android.support:appcompat-v7:21.0.+'
+      compile 'com.google.android.gms:play-services:6.5.+'
     }
 	
 Add Metadata for Google Play Services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**************************************
 	
 Add Google Play services metadata statement to the manifest of the sending device:
 
@@ -48,18 +53,17 @@ Add Google Play services metadata statement to the manifest of the sending devic
        android:value="@integer/google_play_services_version" />
     </application>
   
-The example code in this section sends messages from the handheld device.
 
-Add a Message Sender
-^^^^^^^^^^^^^^^^^^^^^^
+Create the Message Sender
+**************************
 
-To send a message , update the code in the main Activity of the sending device.
+To send a message , update the code in the main Activity of the sending device. For the handheld, modify the code in the **mobile** branch of the Android Studio project.
 
-1. Build a Google Play Services client that includes the Wearable API. 
+1. Build a Google Play Services client for the Wearable API. 
 
   .. code-block:: java
   
-    public class Handheld extends Activity implements
+    public class MessageActivity extends Activity implements
       GoogleApiClient.ConnectionCallbacks,
       GoogleApiClient.OnConnectionFailedListener {
 
@@ -70,7 +74,7 @@ To send a message , update the code in the main Activity of the sending device.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handheld);
         
-      // Build a new GoogleApiClient
+      // Build a new GoogleApiClient for the Wearable API
       googleClient = new GoogleApiClient.Builder(this)
         .addApi(Wearable.API)
         .addConnectionCallbacks(this)
@@ -88,7 +92,7 @@ To send a message , update the code in the main Activity of the sending device.
     // Connect to the data layer when the Activity starts
     @Override
     protected void onStart() {
-	  super.onStart();
+      super.onStart();
       googleClient.connect();
     }
 	  	  
@@ -145,12 +149,28 @@ To send a message , update the code in the main Activity of the sending device.
       }
     }
 
-Add a Message Receiver
-^^^^^^^^^^^^^^^^^^^^^^^
+Implement a Message Listener
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can monitor the data layer for new messages using either a listener service or listener activity.  This section explains how to implement a listener service for messages. 
+You can monitor the data layer for new messages using either a listener service or listener activity.  This section explains how to implement a listener service for messages. For the wearable, modify the code in the **wear** branch of the Android Studio project.
 
-1. Enable the listener service in the manifest file for the wear application.
+Add Build Dependencies
+************************
+
+Add the following build dependencies to the build.gradle file (Module:wear) in the Gradle Scripts folder, if necessary. 
+
+  .. code-block:: java
+  
+    dependencies {
+      compile fileTree(dir: 'libs', include: ['*.jar'])
+      compile 'com.google.android.support:wearable:1.1.+'
+      compile 'com.google.android.gms:play-services-wearable:6.5.+'
+    }
+
+Add Listener Service to Manifest
+**********************************
+	
+Enable the data layer listener in the manifest file.
 
   .. code-block:: java
   
@@ -164,8 +184,11 @@ You can monitor the data layer for new messages using either a listener service 
         </intent-filter>
       </service>
     </application>
+	
+Create a Listener Service Class
+********************************
 
-2. Create a listener in the wear application that extends the WearableListenerService. This example logs any received message to the debug output.
+Create a listener in the wear application that extends the WearableListenerService. This example logs any received message to the debug output.
 
   .. code-block:: java
   
@@ -187,12 +210,12 @@ You can monitor the data layer for new messages using either a listener service 
 
 .. _forward:
 
-Forward Message to the Main Activity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Display Received Messages
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The message listener might need to forward received messages to a component of the application that is running on a different thread. The LocalBroadcastManager can be useful in these cases. This procedure shows how the LocalBroadcastManager can forward received messages to the main Activity, for display in the UI.
+The wearable listener service cannot directly update the wearable UI because it runs on a different thread. The following example shows how to forward received messages to the main Activity using the LocalBroadcastManager.
 
-1. In the wearable listener service, broadcast the received message locally.
+1. In the ListenerService class, broadcast the received data layer messages locally.
 
   .. code-block:: java
   
@@ -212,7 +235,7 @@ The message listener might need to forward received messages to a component of t
             super.onMessageReceived(messageEvent);
         }
 
-2. In the main wear Activity, register a local broadcast receiver in onCreate method. This receiver filters incoming broadcasts for those from the data layer.
+2. In the wearable Activity, register to receive broadcasts from the ListenerService.
 
   .. code-block:: java
 
@@ -227,7 +250,7 @@ The message listener might need to forward received messages to a component of t
         LocalBroadcastManager.getInstance(this).registerReceiver(messageReceiver, messageFilter);
       }
 	
-3. In the main wear Activity, define a class that extends broadcast receiver, implements the onReceive method, and extracts the message. This example displays the message in the wearable UI.
+3. In the wearable Activity, define a nested class that extends BroadcastReceiver, implements the onReceive method, and extracts the message. This example receives and displays the message the wearable UI.
 
 	  .. code-block:: java
 
@@ -246,9 +269,9 @@ Keep in mind that this example is not a full implementation. You must unregister
 Try the First Data Layer App
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To try your new data layer app, set up your development environment with either emulators or devices, for both the handheld and wearable. Google documentation covers these topics.
+Make sure the handheld and wearable are successfully paired. If not, see :ref:`setup`.
 
-Start the "wear" app. It displays the default Hello message generated by the Android Studio New Project wizard:
+Start the "wear" app in Android Studio. It displays the default Hello message generated by the Android Studio new project wizard:
 
   .. figure:: images/wear-square.png
       :scale: 50
@@ -256,4 +279,11 @@ Start the "wear" app. It displays the default Hello message generated by the And
 Then launch the handheld app. The wearable display changes to the message sent from the handheld device through the wearable data layer. 
 
   .. figure:: images/wear-message.png
-      :scale: 50	  
+      :scale: 50
+
+Example
+--------
+
+The full Android Studio project for data layer messages is posted at https://github.com/LarkspurCA/WearableMessage.git.
+
+
