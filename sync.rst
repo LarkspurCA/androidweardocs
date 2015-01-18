@@ -1,8 +1,8 @@
 .. _datalayer:
 
 
-Wearable Data Layer
-================================
+Data Layer Messages
+=====================
 
 By Michael Hahn, January 2015
 
@@ -157,7 +157,7 @@ You can monitor the data layer for new messages using either a listener service 
 Add Build Dependencies
 ************************
 
-Add the following build dependencies to the build.gradle file (Module:wear) in the Gradle Scripts folder, if necessary. 
+Add wearable SDK dependencies to the build.gradle file (Module:wear) in the Gradle Scripts folder, as necessary. 
 
   .. code-block:: java
   
