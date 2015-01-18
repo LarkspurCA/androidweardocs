@@ -4,7 +4,7 @@
 Data Layer Messages
 =====================
 
-By Michael Hahn, January 2015
+By Michael Hahn, January 2015 
 
 An application that runs on a wearable device usually utilizes some of the capabilities of a paired handheld device. This means you need two separate Android apps, one that runs on the wearable and another that runs on the handheld. These two apps communicate with one another over the bluetooth link that connects the two devices. 
 
