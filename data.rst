@@ -1,7 +1,7 @@
-Wearable Data Sync
-===================
+Data Layer DataMap Objects
+===========================
 
-By Michael Hahn, October 2014
+By Michael Hahn, January 2015
 
 The wearable data layer can sync either messages or data. A message contains a single text string, but data is typically wrapped in a DataMap object. A DataMap is similar to a Bundle in that it contains a collection of of one or more of data types, stored as key/value pairs. Android uses a Bundle to encapsulate data exchanged between activities. Similarly, wearable apps can use a DataMap to encapsulate the data exchanged over the wearable data layer. 
 
@@ -109,13 +109,13 @@ To send a data object , update the code in the main Activity of the sending devi
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) { }
 
-3. Define a class that extends the Thread class and implements a method that sends your data object to all nodes currently connected to the data layer. This task can block the main UI thread, so it must run in a new thread. 
+3. Define a class that extends the Thread class and implements a method that sends your data object to all nodes currently connected to the data layer. This task can block the main UI thread, so it must run in a new thread. This can be an inner class.
 
   .. code-block:: java
   
     class SendToDataLayerThread extends Thread {
       String path;
-      String data;
+      DataMap dataMap;
 
       // Constructor for sending data objects to the data layer
       SendToDataLayerThread(String p, DataMap data) {
@@ -192,3 +192,10 @@ Using Received Data
 ^^^^^^^^^^^^^^^^^^^^^
 	
 In this example, a background service receives the data. If you need this data in the UI or elsewhere, you can broadcast the results locally, as described in :ref:`forward`. Just add a Bundle (DataMap.toBundle) as the intent extra, instead of a simple message string.
+
+
+Example
+--------
+
+The full Android Studio project for data layer DataMap objects is posted at https://github.com/LarkspurCA/WearableDataMap.git.
+
