@@ -1,13 +1,13 @@
 Wearable GPS
 ================================
 
-By Michael Hahn, November 2014
+By Michael Hahn, January 2015
 
 Wearables are great when you are on the go, especially when you are out for a run or looking for destination. It would be great to just glance at your watch for your current location, rather than pulling out your handheld. Now that some wearables have a built-in GPS sensor, you can continue to use location-based apps even when the wearable is not paired with a handheld.
 
 You implement location services in a wearable using the Google Play Fused Location Provider, just as you would in a handheld. The Android operating system takes care of choosing the GPS sensor (wearable or handheld) and implements any necessary communications between devices. The handheld GPS is preferred when both devices have a GPS sensor, and the switchover between sensors is automatic when pairing status changes.
 
-You can create your first location-aware wearable app without writing a single line of handheld code. The section shows how.
+You can create your first location-aware wearable app without writing a single line of handheld code. You don't even need to implement a handheld Activity. The section shows how.
   
 
 First Wearable GPS
@@ -29,6 +29,19 @@ Modify the wearable manifest file to permit location service access and define G
       <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     </application> 
 
+Add Build Dependencies
+************************
+
+Add the following build dependencies to the wearable build.gradle file (Module:wear) in the Gradle Scripts folder, if necessary. 
+
+  .. code-block:: java
+  
+    dependencies {
+      compile 'com.google.android.support:wearable:1.1.0'
+      compile 'com.google.android.gms:play-services-wearable:6.5.+'
+      compile 'com.google.android.gms:play-services-location:6.5.+'
+    }
+
 Add a Location Listener
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -36,7 +49,7 @@ Add a Location Listener
 
   .. code-block:: java
   
-    public class Wearable extends Activity implements
+    public class WearableActivity extends Activity implements
       GoogleApiClient.ConnectionCallbacks,
       GoogleApiClient.OnConnectionFailedListener
       LocationListener {
