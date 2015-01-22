@@ -92,9 +92,9 @@ Add a Location Listener
       // Use high accuracy
       locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
       // Set the update interval to 2 seconds
-      locationRequest.setInterval(2);
+      locationRequest.setInterval(TimeUnit.SECONDS.toMillis(2));
       // Set the fastest update interval to 2 seconds
-      locationRequest.setFastestInterval(2);
+      locationRequest.setFastestInterval(TimeUnit.SECONDS.toMillis(2));
       // Set the minimum displacement
       locationRequest.setSmallestDisplacement(2);
          
