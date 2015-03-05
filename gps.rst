@@ -1,7 +1,7 @@
 Wearable GPS
 ================================
 
-By Michael Hahn, January 2015
+By Michael Hahn, March 2015
 
 Wearables are great when you are on the go, especially when you are out for a run or looking for destination. It would be great to just glance at your watch for your current location, rather than pulling out your handheld. Now that some wearables have a built-in GPS sensor, you can continue to use location-based apps even when the wearable is not paired with a handheld.
 
@@ -156,4 +156,10 @@ This simple example works for all wearables, with or without a GPS sensor. Those
 Example
 --------
 
-The working example for wearable GPS is at https://github.com/LarkspurCA/WearableGPS.
+The working example for this section is at https://github.com/LarkspurCA/WearableGPS.
+
+Golf Rangefinder Example
+-------------------------
+
+Golf is an activity where you often want to know the distance to the next hole so you can choose the perfect club for the shot. There are plenty of rangefinders on the market today, but few are as small and convenient as a smart watch.  The golf rangefinder example (Clipon Caddie) is a sample application that utilizes the GPS concepts in this section to perform a useful task for golfers, to determine the current location and display the number of yards to the current hole. The full source code code is available at https://github.com/GolfMarin/CliponCaddie, and the installable app is at http://cliponcaddie.com.
+
