@@ -1,7 +1,7 @@
 Wearable Application Launch
 =============================
 
-By Michael Hahn, November 2014
+By Michael Hahn, April 2015
 
 Android wearable devices have an Android operating system, so you can develop  applications for wearables much as you do for handheld devices. Simple handheld apps can potentially run in a standalone mode on the wearable, without being paired with a handheld. More commonly however, wearable apps work in conjunction with a handheld for voice recognition, Internet access, and other services.
 
@@ -28,39 +28,36 @@ So far, not a single line of new code was necessary; the Android Studio new proj
 Handheld Activation 
 ----------------------------------------
 
-A great way to start your wearable app is from a notification on the wearable. This is useful when you already have a handheld app and want to extend features to a wearable. Users simply swipe the notification and tap the Open icon to launch the wearable portion of your app. They return to the notification stream when they dismiss the wearable app.
+A great way to start your wearable app is from a notification on the wearable. This is useful when you already have a handheld app and want to extend features to a wearable. The handheld app starts the launch process by sending a data object to the wearable that contains the information the wearable needs to post a notification locally. Users swipe this notification and tap the Open icon to launch the wearable portion of your app. They return to the notification stream when the wearable app closes. 
 
-Creating a notification and demand that starts your wearable app is somewhat different than that described in :ref:`demand`. In this case the notification includes a demand that invokes an action in the wearable itself, rather than an action back in the handheld. So rather than dispatching a notification from the handheld, we have the handheld ask the wearable to perform that task. 
+Often times you want to launch the wearable app with extra data that tells it what feature to open or what data to display. For example, a general handheld golf app might open the wearable for a specific golf course. This section includes details about adding such data to the launch process. Without this, the wearable app simply launches in its default mode.
 
 Prerequisite
 ^^^^^^^^^^^^^^
-This procedure relies on communication through the data layer. Communication through the data layer requires setup of Google Play Services for wearables in both the handheld and wearable devices (see :ref:`datalayer`).
+This procedure relies on communication through the data layer. Communication through the data layer requires setup of Google Play Services for wearables in both the handheld and wearable devices (see :ref:`data`).
 
 Post a Notification
 ^^^^^^^^^^^^^^^^^^^^^
 
-1. In the handheld, send the title and body of a notification to the wearable device over the data layer. The following excerpt shows how you could implement this task in the onConnected method of the GooglePlayServicesClient. The SendToDataLayerThread class is defined in :ref:`datalayer`.
-
-  .. code-block:: java
-  
-    @Override
-    public void onConnected(Bundle dataBundle) {
-      // Data layer connection code
-	  ...
-      // Send DataMap object to wearable
-      String WEARABLE_START_PATH = "/wearable_start";
-      DataMap notifyWearable = new DataMap();
-      notifyWearable.putString("title", "Title");
-      notifyWearable.putString("body", "Start now?");
-      // Send to data layer
-      new SendToDataLayerThread(WEARABLE_START_PATH, notifyWearable).start();
-    }
-
-2. In the wearable, receive the title and body in the WearableListenerService class. The following excerpt shows a sample override for the onDataChanged method.
+1. First create a DataMap object that includes the title and body for the notification. Optionally, include any extra data that you want to pass to your wearable app when it starts. Then send this DataMap object to the wearable data layer, along with a path constant that identifies the purpose of the data. The SendToDataLayerThread class in this example is defined in :ref:`data`.
 
   .. code-block:: java
   
     String WEARABLE_START_PATH = "/wearable_start";
+  
+    // Create a DataMap
+    String WEARABLE_START_PATH = "/wearable_start";
+    DataMap notifyWearable = new DataMap();
+    notifyWearable.putString("title", "Notification Title");
+    notifyWearable.putString("body", "Start now?");
+    // Optional extra data to use when starting wearable
+    notifyWearable.putString("extra", "extra data")
+    // Send to data layer
+    new SendToDataLayerThread(WEARABLE_START_PATH, notifyWearable).start();
+
+2. In the wearable, receive the DataMap in a WearableListenerService class. The following excerpt shows a sample override for the onDataChanged method of the service.
+
+  .. code-block:: java
   
     @Override
     public void onDataChanged(DataEventBuffer dataEvents) {
@@ -68,33 +65,36 @@ Post a Notification
       for (DataEvent event : dataEvents) {
           // Check the event type
           if (event.getType() == DataEvent.TYPE_CHANGED) {
-              String path = event.getDataItem().getUri().getPath();
-              //Verify the data path, get the DataMap, and send local notification
+              // Check the data path
               if (path.equals(WEARABLE_START_PATH)) {
-                  // Create and send a local notification inviting the user to start the wearable app
+                  // Create a local notification 
                   dataMap = DataMapItem.fromDataItem(event.getDataItem()).getDataMap();
-                  sendLocalNotification(dataMap.getString("title"), dataMap.getString("body"));
+                  sendLocalNotification(dataMap);
                }
             }
         }
     }
   
 
-3. In the wearable, implement the procedure that constructs and posts a notification.
+3. In the wearable, implement the procedure that constructs and posts a demand (notification) that can launch your app. Optionally, the Pending Intent in this notification can include extra data for the wearable app.
 
   .. code-block:: java
   
-    private void sendLocalNotification(String title, String body) {
+    private void sendLocalNotification(DataMap dataMap) {
       int notificationId = 001;
       
       // Create a pending intent that starts this wearable app
       Intent startIntent = new Intent(this, HoleActivity.class).setAction(Intent.ACTION_MAIN);
-      PendingIntent startPendingIntent = PendingIntent.getActivity(this, 0, startIntent, 0);
+      // Add extra data for app startup or initialization, if available
+      startIntent.putExtra("extra", dataMap.getString("extra"));
+      PendingIntent startPendingIntent = 
+        PendingIntent.getActivity(this, 0, startIntent, PendingIntent.FLAG_CANCEL_CURRENT);
       
       Notification notify = new NotificationCompat.Builder(this)
-        .setContentTitle(title)
-        .setContentText(body)
+        .setContentTitle(dataMap.getString("title"))
+        .setContentText(dataMap.getString("body"))
         .setSmallIcon(R.drawable.ic_launcher)
+        .setAutoCancel(true)
         .setContentIntent(startPendingIntent)
         .build();
         
@@ -102,4 +102,25 @@ Post a Notification
       notificationManager.notify(notificationId, notify);
     }
 
-The wearable display now includes a notification inviting the user to launch the wearable app. A swipe to the left displays the launcher icon, which the user clicks to launch the app.
+The wearable notification stack now includes a notification inviting the user to launch your wearable app. A swipe to the left displays the launcher icon, which the user clicks to launch the app.
+
+ .. figure:: images/start_notification.png
+      :scale: 70
+
+4. In the wearable app, receive and process any extra information.  Normally, you implement this within the onCreate override of your app.
+
+  .. code-block:: java
+  
+    // Check for extra data in the intent
+    // If present, extract and use
+
+    Bundle extras = getIntent().getExtras();
+    if (extras != null) {
+	
+        // Get the extra data
+        String extraData = extras.getString("extra");
+        ...
+        // Act on the extra data
+        ...
+    }
+

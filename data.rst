@@ -1,3 +1,5 @@
+.. _data:
+
 Data Layer DataMap Objects
 ===========================
 
