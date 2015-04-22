@@ -46,7 +46,6 @@ Post a Notification
     String WEARABLE_START_PATH = "/wearable_start";
   
     // Create a DataMap
-    String WEARABLE_START_PATH = "/wearable_start";
     DataMap notifyWearable = new DataMap();
     notifyWearable.putString("title", "Notification Title");
     notifyWearable.putString("body", "Start now?");
