@@ -1,7 +1,7 @@
 How Does Android Wear Work?
 ===========================
 
-By Michael Hahn, December 2014
+By Michael Hahn, June 2015
 
 The easiest way to learn how Android Wear works is to install the Android Wear companion app on your handheld device, pair with an Android watch or emulator and try out a few examples.  This site focuses on wearable app development, so it starts by explaining how to set up a development environment that you can use to build and run sample code provided by Android.
 
@@ -14,13 +14,17 @@ To try out Android Wear in a development environment, perform the following task
 
 1. Install `Android Studio <http://developer.android.com/sdk/installing/studio.html>`_.
 
-2. Install the Android Wear system image and support packages using the Android SDK Manager. 
+2. Install the Android Wear SDK and support packages using the Android SDK Manager. 
 
-  * Android 5.0 (API 21)
+The following packages are generally sufficient when using a released SDK. Preview releases can require additional packages.
+
+  * Android 5 (API 22) or later
   * Android SDK Tools 24 or later
-  * Android Support Library 21 or later
-  * Android Support Repository 11 or later
-  * Android Wear ARM EABI v7a System Image 21 or later (for wearable emulator)
+  * Android Support Library 22 or later
+  * Android Support Repository 15 or later
+  * Android Wear ARM EABI v7a System Image (for linux wearable emulator)
+  * Google Play services 25 or later
+  * Google Repository 19 or later
 
 .. _start:
 
