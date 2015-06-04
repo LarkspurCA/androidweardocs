@@ -1,7 +1,7 @@
 Android Wear Suggest
 ====================
 
-By Michael Hahn, January 2015
+By Michael Hahn, June 2015
 
 The Suggest context stream is one of the core functions for Android Wear. It consists of a sequence of notifications about timely information, such as incoming messages or upcoming appointments. It can also display useful information about a task at hand, such as preparing a recipe or communicating with a digital assistant.
 
@@ -44,8 +44,8 @@ This section explains how to create a new project using Android Studio Version 1
 
 3. In the new project dialog, enter your Application Name, Domain, and a project directory. Click **Next**.
 
-4. In the form factors dialog, select **Phone and Tablet** and **Wear**. Keep the default SDKs, and then click **Next**.
-
+4. In the form factors dialog, select **Phone and Tablet** and **Wear** form factors. Select the latest SDK for each when using emulators. If testing with actual devices, specify the SDK level of the devices under test.
+ 
 5. In the mobile activity dialog, select **Blank Activity**. Click **Next**.
 
 6. In the mobile option dialog enter an Activity Name for the handheld. Accept the defaults or the other fields and click **Next**. The name for an activity that generates a wearable "suggestion" might be SuggestActivity.
