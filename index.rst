@@ -1,11 +1,11 @@
 Welcome to Android Wear Docs!
 =============================
 
-By Michael Hahn, May 2015
-
 **What is Android Wear?**
 
-Android Wear is the Google API for smart watches, Google Glass, and other wearable devices. These wearables work in conjunction with an Android smartphone to put useful information at your fingertips. There is now a wide selection of Android watches to choose from, including those that provide GPS and offline music. This means you can now use the watch for common activities, like exercise or navigation, even when it is not paired with your phone.
+By Michael Hahn, April 2015
+
+Android Wear is the Google API for smart watches, Google Glass, and other wearable devices. These wearables work in conjunction with an Android smartphone to put useful information at your fingertips. There is now a wide selection of Android watches to choose from, incuding those that provide GPS and offline music. This means you can now use the watch for common activities, like exercise or navigation, even when it is not paired with your phone.
 
 Now that Apple has introduced their smart watch, wearables have crossed the tipping point of just being a consumer plaything to an integral part of work and play. Remember that It was just a few years ago when the smart phone was introduced, and now it is part of everyday life. 
 
@@ -24,6 +24,7 @@ Contents:
    sync.rst
    data.rst
    gps.rst
+   always.rst
    contact.rst
 
 Indices and tables

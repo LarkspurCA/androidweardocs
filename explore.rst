@@ -22,9 +22,9 @@ The following packages are generally sufficient when using a released SDK. Previ
   * Android SDK Tools 24 or later
   * Android Support Library 22 or later
   * Android Support Repository 15 or later
-  * Android Wear ARM EABI v7a System Image (for linux wearable emulator)
   * Google Play services 25 or later
   * Google Repository 19 or later
+  * Android Wear ARM EABI v7a System Image (for linux wearable emulator)
 
 .. _start:
 

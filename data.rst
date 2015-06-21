@@ -17,7 +17,7 @@ On the handheld side, you start with a PutDataMapRequest. This is a helper class
 First Wearable Data
 --------------------
 
-If you have not already done so, :ref:`newapp`. The new project wizard in Android Studio beta creates a project with two main activities, one for the handheld device and another for the wearable. These two activities use the same package name, which is essential for the wearable data layer to work.
+If you have not already done so, :ref:`newapp`. The new project wizard in Android Studio creates a project with two main activities, one for the handheld device and another for the wearable. These two activities use the same package name, which is essential for the wearable data layer to work.
 
 Data layer transfers can originate from either a handheld or wearable. For bidirectional data both the handheld and wearable should implement the code in this section.
 
