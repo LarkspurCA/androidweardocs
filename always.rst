@@ -173,3 +173,9 @@ After one minute the ambient display is modified, in this example to include a n
      :scale: 50
 
 To stop this app, tap screen for to enter the interactive mode and press watch button.
+
+Example
+--------
+
+The working example for this section is at https://github.com/LarkspurCA/WearableAlwaysOn.
+
