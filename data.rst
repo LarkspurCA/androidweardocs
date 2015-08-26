@@ -3,7 +3,7 @@
 Data Layer DataMap Objects
 ===========================
 
-By Michael Hahn, January 2015
+By Michael K. Hahn, January 2015
 
 The wearable data layer can sync either messages or data. A message contains a single text string, but data is typically wrapped in a DataMap object. A DataMap is similar to a Bundle in that it contains a collection of one or more of data types, stored as key/value pairs. Android uses a Bundle to encapsulate data exchanged between activities. Similarly, wearable apps can use a DataMap to encapsulate the data exchanged over the wearable data layer. 
 
