@@ -45,10 +45,10 @@ Verify the SDK Versions
 
 Verify the versions of the SDK and build tool in the build.gradle (Module:mobile) file in Gradle Scripts folder:
 
-* compileSdkVersion: 22
+* compileSdkVersion: 23
 * minSdkVersion: 22
 * targetSdkVersion: 22
-* buildToolsVersion: 22.0.1
+* buildToolsVersion: 23.0.0
 
   .. code-block:: java
   
@@ -74,7 +74,7 @@ Add dependencies to the build.gradle (Module:mobile) file, if missing.
       compile 'com.google.android.support:wearable:1.2.0'
       provided 'com.google.android.wearable:wearable:1.0.0'
 
-      compile 'com.google.android.gms:play-services-wearable:7.5.0'
+      compile 'com.google.android.gms:play-services-wearable:7.8.0'
     }
 	
 Add the WAKE_LOCK Permission
