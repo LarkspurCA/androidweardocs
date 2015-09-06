@@ -1,7 +1,7 @@
 Always-On Wearable
 ====================
 
-By Michael Hahn, June 2015
+By Michael Hahn, Spetember 2015
 
 Some Wearable apps are most useful when they remain in the foreground for an extended period of time. For example, a golf app needs to be available for a round of golf and a travel app is needed for the whole trip. At the same time, such apps need to conserve power by changing to a low-power mode when inactive. The Always-On feature makes this all possible. Your wear app becomes the primary activity, rather than the watchface, and it conserves power by changing to the ambient mode during periods of inactivity.  
 
@@ -43,7 +43,7 @@ Define the colors accordingly in a new colors.xml file:
 Verify the SDK Versions
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Verify the versions of the SDK and build tool in the build.gradle (Module:mobile) file in Gradle Scripts folder:
+Verify the versions of the SDK and build tool in the build.gradle (Module:mobile) file in Gradle Scripts folder.
 
 * compileSdkVersion: 23
 * minSdkVersion: 22
@@ -126,7 +126,7 @@ When the watch enters ambient mode you change the display to a minimum power con
         mTextView.setTextColor(Color.WHITE);
     }
 	
-On return to interactive mode, all changes for ambient mode are reversed:
+On return to interactive mode reverse all your ambient mode changes.
 
   .. code-block:: java
 
