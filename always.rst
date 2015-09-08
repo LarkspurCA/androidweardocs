@@ -53,8 +53,8 @@ Verify the versions of the SDK and build tool in the build.gradle (Module:mobile
   .. code-block:: java
   
     android {
-      compileSdkVersion 22
-      buildToolsVersion "22.0.1"
+      compileSdkVersion 23
+      buildToolsVersion "23.0.0"
 
       defaultConfig {
           applicationId "com.androidweardocs.alwayson"
@@ -138,7 +138,7 @@ On return to interactive mode reverse all your ambient mode changes.
         super.onExitAmbient();
     }
 
-Update Content in the Ambient Mode
+Update Content During Ambient Mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the ambient mode you can update the display with current content by implementing onUpdateAmbient. This method is called every 60 seconds. For more frequent updates you can respond to incoming data, use the alarm manager, or implement a Handler. To benefit from the power-saving capabilities of the ambient mode, keep the update interval greater than 10 sec.
