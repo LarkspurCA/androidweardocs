@@ -65,7 +65,7 @@ Modify the Handheld Activity
     import android.support.v7.app.AppCompatActivity;
     import android.support.v7.app.NotificationCompat;
   
-2. Add Android Wearable features to a Wearable extender object, for example ShowBackgroundOnly, to the onCreate method.
+2. Add Android Wearable features to a Wearable extender object, for example HintShowBackgroundOnly, to the onCreate method.
 
   .. code-block:: java
   
@@ -85,7 +85,7 @@ Modify the Handheld Activity
           .extend(wearableExtender)
           .build();
 
- 4. Create a graphic for the notification by copying the ic_launcher.png (hdpi) icon from the mipmap folder to the drawable folder. 
+4. Create a graphic for the notification by copying the ic_launcher.png (hdpi) icon from the mipmap folder to the drawable folder. 
  
 5. Optionally, apply a release 4.1 style to the normal notification, such as the one used in the Big Picture example (NotificationCompat.BigPictureStyle).
 
