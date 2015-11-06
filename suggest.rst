@@ -1,7 +1,7 @@
 Android Wear Suggest
 ====================
 
-By Michael Hahn, June 2015
+By Michael Hahn, November 2015
 
 The Suggest context stream is one of the core functions for Android Wear. It consists of a sequence of notifications about timely information, such as incoming messages or upcoming appointments. It can also display useful information about a task at hand, such as preparing a recipe or communicating with a digital assistant.
 
@@ -62,9 +62,8 @@ Modify the Handheld Activity
   .. code-block:: java
    
     import android.support.v4.app.NotificationManagerCompat;
-    import android.support.v4.app.NotificationCompat;
-    import android.support.v4.app.RemoteInput;
-    import android.app.Notification;
+    import android.support.v7.app.AppCompatActivity;
+    import android.support.v7.app.NotificationCompat;
   
 2. Add Android Wearable features to a Wearable extender object, for example ShowBackgroundOnly, to the onCreate method.
 
@@ -85,30 +84,33 @@ Modify the Handheld Activity
           .setContentText("First Wearable notification.")
           .extend(wearableExtender)
           .build();
-		  
-3. Optionally, apply a release 4.1 style to the normal notification, such as the one used in the Big Picture example (NotificationCompat.BigPictureStyle).
 
-4. Get an instance of the Notification Manager service.
+ 4. Create a graphic for the notification by copying the ic_launcher.png (hdpi) icon from the mipmap folder to the drawable folder. 
+ 
+5. Optionally, apply a release 4.1 style to the normal notification, such as the one used in the Big Picture example (NotificationCompat.BigPictureStyle).
+
+6. Get an instance of the Notification Manager service.
 
   .. code-block:: java
 
     NotificationManagerCompat notificationManager =
         NotificationManagerCompat.from(this);
 
-5. Dispatch the notification. 
+7. Dispatch the notification. 
 
   .. code-block:: java
    
     int notificationId = 1;
     notificationManager.notify(notificationId, notification);
 
+This app creates a notification that is sent to both the handheld and wearable. If necessary on the wearable, scroll through other notifications to view this one. The Hello World displayed on the handheld screen is part of the default app created by the new project wizard.
+
+The basic Suggest functionality on a wearable is handled entirely by its default system software; no custom wearable app is required. 
 
 .. figure:: images/hello-wearable.png
     :scale: 35
     :align: right
-	
-	
-The result of this example is a notification with a title and body. If necessary, scroll through other notifications to view this one.
+
 
 Example
 --------

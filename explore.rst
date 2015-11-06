@@ -1,9 +1,9 @@
 How Does Android Wear Work?
 ===========================
 
-By Michael Hahn, June 2015
+By Michael Hahn, November 2015
 
-The easiest way to learn how Android Wear works is to install the Android Wear companion app on your handheld device, pair with an Android watch or emulator and try out a few examples.  This site focuses on wearable app development, so it starts by explaining how to set up a development environment that you can use to build and run sample code provided by Android.
+The easiest way to learn how to develop Android Wear applications is to install the Android Wear companion app on your handheld device, pair with an Android watch or emulator, and try out the `Android sample projects <http://developer.android.com/samples/wearable.html>`_.
 
 .. _setup:
 
@@ -12,26 +12,42 @@ Set Up the Development Environment
 
 To try out Android Wear in a development environment, perform the following tasks:
 
-1. Install `Android Studio <http://developer.android.com/sdk/installing/studio.html>`_.
+1. Verify that you have the Java 7 JDK installed. Run the following commands from a console:
 
-2. Install the Android Wear SDK and support packages using the Android SDK Manager. 
+  ::
+    
+    java -version
+      java version "1.7.0_71"
+      Java(TM) SE Runtime Environment (build 1.7.0_71-b14)
+      Java HotSpot(TM) 64-Bit Server VM (build 24.71-b01, mixed mode)
+    
+    javac -version
+      javac 1.7.0_71
 
-The following packages are generally sufficient when using a released SDK. Preview releases can require additional packages.
+  Both commands should display version 1.7. If not, install the Oracle Java SE Development Kit.
+  
+2. Download the `Android Studio Package <http://developer.android.com/sdk/installing/studio.html>`_ for your host and follow the installation instructions.
 
-  * Android 5 (API 22) or later
-  * Android SDK Tools 24 or later
-  * Android Support Library 22 or later
-  * Android Support Repository 15 or later
-  * Google Play services 25 or later
-  * Google Repository 19 or later
-  * Android Wear ARM EABI v7a System Image (for linux wearable emulator)
+3. Start Android Studio (*android-studio/bin/studio.sh*). If you have a previous installation, you can import settings from there. Otherwise, a wizard walks you through the setup procedure. 
+
+  The wizard installs the following set of Android SDKs:
+  
+  * Android SDK Build-tools
+  * Android SDK Platform-tools
+  * Android SDK Tools
+  * Android Support Repository
+  * Google Repository
+  * SDK Platform Android 
+  * Sources for Android SDK
+  
+  4. For convenience, add a desktop shortcut or menu item to launch Android Studio.
 
 .. _start:
 
 Set Up Your Handheld Device
 ------------------------------
 
-1. Install the Android Wear companion app on your handheld device.
+1. Launch Google Play and Install the Android Wear companion app on your handheld device. 
 
   .. figure:: images/apps.png
     :scale: 25 %
@@ -130,8 +146,8 @@ Wearable Device Setup
   
    Your wearable device disables USB debugging by default, and the option to enable it can be hidden as well. You must open Settings, select About, and then click Build Number seven times. The Settings menu then includes Developer options, where you can enable debugging over bluetooth.  
    
-Start a Device Debug Session
-*****************************
+Start a Wearable Device Debug Session
+**************************************
 
 
 1. On the handheld, open the Android Wear companion app.
