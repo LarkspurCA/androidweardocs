@@ -3,7 +3,7 @@
 Android Wear Demand
 ===================
 
-By Michael Hahn, January 2015
+By Michael Hahn, November 2015
 
 The Demand context is one of the core functions for Android Wear. A demand is displayed as a large icon, typically when you swipe a displayed suggestion (notification). You tap on an icon to perform the desired demand.
 

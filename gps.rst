@@ -1,7 +1,7 @@
 Wearable GPS
 ================================
 
-By Michael Hahn, March 2015
+By Michael Hahn, November 2015
 
 Wearables are great when you are on the go, especially when you are out for a run or looking for destination. It would be great to just glance at your watch for your current location, rather than pulling out your handheld. Now that some wearables have a built-in GPS sensor, you can continue to use location-based apps even when the wearable is not paired with a handheld.
 
@@ -13,7 +13,7 @@ You can create your first location-aware wearable app without writing a single l
 First Wearable GPS
 --------------------
 
-If you have not already done so, :ref:`newapp`. The new project wizard in Android Studio beta creates a project with two main activities, one for the handheld device and another for the wearable. These two activities use the same package name, which is essential for the wearable GPS to work.
+If you have not already done so, :ref:`new_wear_app`. The new project wizard in Android Studio beta creates a project with two main activities, one for the handheld device and another for the wearable. These two activities use the same package name, which is essential for the wearable GPS to work.
 
 Add Permissions and Metadata for Google Play Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

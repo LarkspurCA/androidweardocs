@@ -44,15 +44,11 @@ This section explains how to create a new project using Android Studio Version 1
 
 3. In the new project dialog, enter your Application Name, Domain, and a project directory. Click **Next**.
 
-4. In the form factors dialog, select **Phone and Tablet** and **Wear** form factors. Select the latest SDK for each when using emulators. If testing with actual devices, specify the SDK level of the devices under test.
+4. In the target devices dialog, select **Phone and Tablet** only. Accept the default **Minimum SDK** unless you are testing with a device that requires an earlier version. Click **Next**.
  
-5. In the mobile activity dialog, select **Blank Activity**. Click **Next**.
+5. In the Add an Activity to Mobil dialog, select **Blank Activity**. Click **Next**.
 
-6. In the mobile option dialog enter an Activity Name for the handheld. Accept the defaults or the other fields and click **Next**. The name for an activity that generates a wearable "suggestion" might be SuggestActivity.
-
-7. In the wear activity dialog, select **Blank Wear Activity**. Then click **Next**.
-
-8.  In the wear options dialog enter an Activity Name for the wearable. Accept the defaults for the other fields and click **Finish**. You can use the same name for the wearable activity that you used for the handheld activity.
+6. In the Customize the Activity dialog,  enter an Activity Name that suggests the purpose of the activity, like SuggestActivity. Accept default values for the other fields and click **Next**.
 
 Modify the Handheld Activity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

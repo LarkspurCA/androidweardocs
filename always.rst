@@ -1,7 +1,7 @@
 Always-On Wearable
 ====================
 
-By Michael Hahn, Spetember 2015
+By Michael Hahn, November 2015
 
 Some Wearable apps are most useful when they remain in the foreground for an extended period of time. For example, a golf app needs to be available for a round of golf and a travel app is needed for the whole trip. At the same time, such apps need to conserve power by changing to a low-power mode when inactive. The Always-On feature makes this all possible. Your wear app becomes the primary activity, rather than the watchface, and it conserves power by changing to the ambient mode during periods of inactivity.  
 
@@ -18,7 +18,7 @@ Note: This is a new and unreleased feature, except to developers.
 First Always On App
 --------------------
  
-:ref:`newapp`, specifying SDK 22 as the target SDK. The new project wizard in Android Studio creates a project with two main activities, one for the handheld device and another for the wearable. The default theme displays white text on a black background, which is a typical ambient mode display. To try out the always-on feature, modify the wear layout to specify black text on a cyan background, and have the view fill the parent:
+:ref:`new_wear_app`, specifying SDK 22 as the target SDK. The new project wizard in Android Studio creates a project with two main activities, one for the handheld device and another for the wearable. The default theme displays white text on a black background, which is a typical ambient mode display. To try out the always-on feature, modify the wear layout to specify black text on a cyan background, and have the view fill the parent:
 
   .. code-block:: html
 
