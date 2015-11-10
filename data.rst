@@ -17,9 +17,9 @@ On the handheld side, you start with a PutDataMapRequest. This is a helper class
 First Wearable Data
 --------------------
 
-This section describes how to create a wearable app that sends data from the handheld to wearable. For bidirectional data, implement the data sender in the wearable and data receiver in the handheld.
+First :ref:`new_wear_app`. The new project has two applications, one for the handheld device and another for the wearable. These two applications use the same package name, which is essential for the wearable data layer to work.
 
-If you have not already done so, :ref:`new_wear_app`. The new project has two main activities, one for the handheld device and another for the wearable. These two activities use the same package name, which is essential for the wearable data layer to work.
+Data layer messages can originate from either a handheld or wearable. For bidirectional messaging both the handheld and wearable should implement a data sender and listener.
 
 Add Metadata for Google Play Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

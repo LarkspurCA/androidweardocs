@@ -13,34 +13,12 @@ Google Play services Version 5 and later include a Wearable Message API that pro
   .. figure:: images/data-layer-stack.png
       :scale: 70
 	  
-In this example, a handheld sends a message to a wearable using the sendMessage method of the Wearable.MessageApi. On the receiving side, a WearableListenerService monitors the data layer and invokes the onMessageReceived callback when a message arrives. The listener service then performs some application-specific task based on the received message. The WearableListenerService is not the only way to receive data, but it is easy to implement because Android Wear manages its life-cycle. 
-
-.. _new_wear_app:
-
-Create a Wearable Project
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This section explains how to create a new wearable project using the Android Studio new project wizard. You can create a project with two main activities, one for the handheld device and another for the wearable. These two activities use the same package name, which is essential for the wearable data layer to work.
-
-1. Launch Android Studio.
-
-2. Select **Start a New Android Studio Project** in the Welcome screen.
-
-3. In the new project dialog, enter your Application Name, Domain, and a project directory. Click **Next**.
-
-4. In the Target Devices dialog, select **Phone and Tablet** and **Wear** form factors. Accept the default **Minimum SDK** for each unless you are testing with devices that requires an earlier version.
- 
-5. In the Add an Activity to Mobile dialog, select **Blank Activity**. Click **Next**.
-
-6. In the Customize Activity dialog enter an Activity Name for the handheld. Accept default values for the other fields and click **Next**.
-
-7. In the Add an Activity to Wear dialog, select **Blank Wear Activity**. Then click **Next**.
-
-8.  In the Customize the Activity dialog enter an Activity Name for the wearable. Accept default values for the other fields and click **Finish**.
+In this example, a handheld sends a message to a wearable using the sendMessage method of the Wearable.MessageApi. On the receiving side, a WearableListenerService monitors the data layer and invokes the onMessageReceived callback when a message arrives. The listener service then performs some application-specific task based on the received message. The WearableListenerService is not the only way to receive data, but it is easy to implement because Android Wear manages its life-cycle.
 
 First Wearable Message
 ------------------------
-The new project has two main activities, one for the handheld device and another for the wearable. These two activities use the same package name, which is essential for the wearable data layer to work.
+
+First :ref:`new_wear_app`. The new project has two applications, one for the handheld device and another for the wearable. These two applications use the same package name, which is essential for the wearable data layer to work.
 
 Data layer messages can originate from either a handheld or wearable. For bidirectional messaging both the handheld and wearable should implement a message sender and listener.
 

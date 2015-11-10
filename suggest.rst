@@ -53,14 +53,13 @@ This section explains how to create a new project using Android Studio Version 1
 Modify the Handheld Activity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.  Import the the packages that support wearable features into the handheld Activity. As a minimum you need the following notification packages:
+1.  Verify that the build.gradle (Module: app) file includes the following dependencies:
 
   .. code-block:: java
    
-    import android.support.v4.app.NotificationManagerCompat;
-    import android.support.v7.app.AppCompatActivity;
-    import android.support.v7.app.NotificationCompat;
-  
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:design:23.1.0'
+
 2. Add Android Wearable features to a Wearable extender object, for example HintShowBackgroundOnly, to the onCreate method.
 
   .. code-block:: java

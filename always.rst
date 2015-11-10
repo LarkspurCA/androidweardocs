@@ -18,7 +18,9 @@ Note: This is a new and unreleased feature, except to developers.
 First Always On App
 --------------------
  
-:ref:`new_wear_app`, specifying SDK 22 as the target SDK. The new project wizard in Android Studio creates a project with two main activities, one for the handheld device and another for the wearable. The default theme displays white text on a black background, which is a typical ambient mode display. To try out the always-on feature, modify the wear layout to specify black text on a cyan background, and have the view fill the parent:
+First :ref:`new_wear_app`. The new project has two applications, one for the handheld device and another for the wearable. specifying SDK 22 as the target SDK. The new project wizard in Android Studio creates a project with two main activities, one for the handheld device and another for the wearable. 
+
+The default theme displays white text on a black background, which is a typical ambient mode display. To try out the always-on feature, modify the wear layout to specify black text on a cyan background, and have the view fill the parent:
 
   .. code-block:: html
 

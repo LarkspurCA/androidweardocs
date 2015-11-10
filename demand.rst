@@ -19,21 +19,16 @@ First Android Wear Demand
 
 If you have not already done so, :ref:`newapp`. The new project wizard in Android Studio creates a project with two main activities, one for the handheld device and another for the wearable. To create your first demand, add code in the handheld activity only, located in the "mobile" branch of the project hierarchy. The software preinstalled on a wearable device or emulator handles the task of displaying notifications and handling demands on the wearable side.
 
-.. _dependencies:
-
-Add Build Dependencies
+Verify Build Dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add build dependencies for the wearable support package to the build.gradle (Module:mobile) file in Gradle Scripts folder, if necessary.  
+Verify that the build.gradle (Module: app) file includes the following dependencies:
 
   .. code-block:: java
-  
-    dependencies {
-      compile fileTree(dir: 'libs', include: ['*.jar'])
-      wearApp project(':wear')
-      compile 'com.android.support:appcompat-v7:21.+'
-      compile 'com.google.android.gms:play-services:6.5.+'
-    }
+   
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:design:23.1.0'
+	
 
 Modify the Handheld Activity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
