@@ -3,54 +3,29 @@ Always-On Wearable
 
 By Michael Hahn, November 2015
 
-Some Wearable apps are most useful when they remain in the foreground for an extended period of time. For example, a golf app needs to be available for a round of golf and a travel app is needed for the whole trip. At the same time, such apps need to conserve power by changing to a low-power mode when inactive. The Always-On feature makes this all possible. Your wear app becomes the primary activity, rather than the watchface, and it conserves power by changing to the ambient mode during periods of inactivity.  
+Some Wearable apps are most useful when they remain in the foreground for an extended period of time. For example, a golf app needs to be available for an entire round of golf and a travel app needs to be visible for the whole trip. At the same time, these apps need to conserve power by changing to the low-power ambient mode during periods of user inactivity. The always-on feature makes it easy to develop applications that incorporate the agressive power-saving capabilities built into Android Wear devices.
 
-An always-on app has two modes of operation:
+An always-on app runs in the foreground with two modes of operation:
 
 * Interactive: A bright full-color screen where a user views information and enters demands
 
-* Ambient: A power-saving screen with minimal color and graphics that displays information only
+* Ambient: A power-saving mode with a screen that has minimal color and simple graphics.
 
-Always on always keeps your app in the foreground in both interactive and ambient modes, so it basically becomes the home screen of the watch.
+This section describes how to create a new always-on application, or simply add the functionality to your existing app.
 
-Note: This is a new and unreleased feature, except to developers.
+.. _basic_always_on:
  
-First Always On App
---------------------
+Basic Always On Setup
+----------------------
+
+The basic setup keeps your wear app in the foreground and implements basic UI power saving features. Switching between interactive and ambient modes is automatic, as is basic screen dimming in ambient mode. Basic setup can be useful for very simple applications or during software development.
  
-First :ref:`new_wear_app`. The new project has two applications, one for the handheld device and another for the wearable. specifying SDK 22 as the target SDK. The new project wizard in Android Studio creates a project with two main activities, one for the handheld device and another for the wearable. 
+To try this out, first :ref:`new_wear_app`. The new project wizard in Android Studio creates a project with two main activities, one for the handheld device and another for the wearable. 
 
-The default theme displays white text on a black background, which is a typical ambient mode display. To try out the always-on feature, modify the wear layout to specify black text on a cyan background, and have the view fill the parent:
-
-  .. code-block:: html
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:text="@string/hello_square"
-        android:textColor="@color/activeText"
-        android:background="@color/activeBackground"
-        />
- 
-Define the colors accordingly in a new colors.xml file:
-
-  .. code-block:: html
-
-    <resources>
-      <item name="activeBackground" type="color">#FF00FFFF</item>
-      <item name="activeText" type="color">#FF000000</item>
-    </resources>
-	 
 Verify the SDK Versions
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Verify the versions of the SDK and build tool in the build.gradle (Module:mobile) file in Gradle Scripts folder.
-
-* compileSdkVersion: 23
-* minSdkVersion: 22
-* targetSdkVersion: 22
-* buildToolsVersion: 23.0.0
+Verify the versions of the SDK and build tools in the build.gradle (Module:mobile) file.
 
   .. code-block:: java
   
@@ -61,14 +36,14 @@ Verify the versions of the SDK and build tool in the build.gradle (Module:mobile
       defaultConfig {
           applicationId "com.androidweardocs.alwayson"
           minSdkVersion 21
-          targetSdkVersion 22
+          targetSdkVersion 23
 	  ...
 	}
 	 
 Add Build Dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^
 	 
-Add dependencies to the build.gradle (Module:mobile) file, if missing.
+Add dependencies to the build.gradle (Module:wear) file, if missing.
 
   .. code-block:: java
 
@@ -76,11 +51,11 @@ Add dependencies to the build.gradle (Module:mobile) file, if missing.
       compile 'com.google.android.support:wearable:1.2.0'
       provided 'com.google.android.wearable:wearable:1.0.0'
 
-      compile 'com.google.android.gms:play-services-wearable:7.8.0'
+      compile 'com.google.android.gms:play-services-wearable:8.3.0'
     }
 	
-Add the WAKE_LOCK Permission
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Add WAKE_LOCK and Uses-Library to the Manifest
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Add the WAKE_LOCK permission at the top level of the manifest. To run this app on a pre-22 APK, you set the wearable library requirement to false in the application section of the manifest.
 
@@ -113,6 +88,11 @@ To enable the Always On feature, extend your main activity from WearableActivity
       }
     }
 
+Customize the Ambient Display
+------------------------------
+
+A full implementation of Always On requires switching to a very simple UI during the ambient mode. Optionally, you can periodically update the display during ambient mode.
+
 Handle Ambient Mode Transitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -140,8 +120,8 @@ On return to interactive mode reverse all your ambient mode changes.
         super.onExitAmbient();
     }
 
-Update Content During Ambient Mode
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Update Content in Ambient Mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the ambient mode you can update the display with current content by implementing onUpdateAmbient. This method is called every 60 seconds. For more frequent updates you can respond to incoming data, use the alarm manager, or implement a Handler. To benefit from the power-saving capabilities of the ambient mode, keep the update interval greater than 10 sec.
 
@@ -155,7 +135,32 @@ This simple example appends a number to the hello message, which it increments e
         mTextView.setText("Hello Square World! " + i.toString());
         i++;
     }
-   
+	
+First App UI Setup 
+^^^^^^^^^^^^^^^^^^^^
+
+The default theme for the wearable displays white text on a black background, which is a typical ambient mode display. To try out the always-on display features, modify the wear layout to specify black text on a cyan background, and have the view fill the parent:
+
+  .. code-block:: html
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="@string/hello_square"
+        android:textColor="@color/activeText"
+        android:background="@color/activeBackground"
+        />
+ 
+Define the colors accordingly in a new colors.xml file:
+
+  .. code-block:: html
+
+    <resources>
+      <item name="activeBackground" type="color">#FF00FFFF</item>
+      <item name="activeText" type="color">#FF000000</item>
+    </resources>  
+	 
 Try the App
 --------------
 
