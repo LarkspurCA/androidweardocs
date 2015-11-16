@@ -78,6 +78,7 @@ Set Up Your Handheld Device
   
   Note: The adb executable is located in the Platform Tools directory of your Android SDK. Add it to your path if necessary.
 
+.. _setup_wear:
   
 Set Up Your Wearable
 ---------------------
