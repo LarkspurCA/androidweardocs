@@ -156,23 +156,35 @@ You also need to modify the manifest file to accept the broadcast. Add a receive
         <action android:name="com.androidweardocs.first_wearable.ACTION_DEMAND"/>
       </intent-filter>
 	</receiver>
+
+Try the First Demand
+---------------------
 	 
-The sample code first displays the notification text, which is simply a title and body. Swiping to the left displays the reply icon with the reply label.	 
+Your new app creates and dispatches a demand notification when it first opens. Both the handheld and wearable receive and post this notification. The wearable adds it to the notification stream, so scroll through the notifications until you see the demand.	 
+
+Scroll the demand notification into full view then swipe to the left. The Reply icon is displayed.
 
    .. figure:: images/demand-sequence-icon.png
       :scale: 100
 
-Selecting the reply icon displays the voice prompt, and then the confirmation after you speak (or type on the emulator).	 
+Tap the reply icon to display the voice and emoji prompts. Voice is the default, so just start speaking to enter a voice demand.  
 
    .. figure:: images/demand-sequence-voice.png
       :scale: 100	
+	  
+In this example the voice demand is *hello handheld*. Android converts your voice input to text and begins sending it to the handheld. You can abort this by taping the blue Sending icon. When Android finishes sending the demand to the handheld, it returns to the Reply prompt. You could then, for example, tap Reply and then Draw Emoji.
+
+   .. figure:: images/demand-sequence-emoji.png
+      :scale: 100	
 	
-The example DemandIntentReceiver receives the broadcasted intent and extracts the voice input. Log messages show the value of the extra text within the intent and the voice string from the remote input. 
-  
-  .. code-block:: text
-  
-    MyTag: Extra message from intent = Reply icon selected.
-    MyTag: User reply from wearable: hello handheld
+In the first prompt you can draw the emoji you want or just click the emoji icon. Either way you get a grid of emoji icons to choose from. Tap the desired emoji and Android sends it to the handheld.
+
+Note: The emoji functionality in not something you need to code; it is all implemented by the Android system software.
+
+The full Example project on github shows how to display demands received by the handheld onscreen.
+
+   .. figure:: images/demand-handheld.png
+      :scale: 100	
 
 Example
 --------
