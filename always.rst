@@ -42,14 +42,14 @@ Verify the dependencies specified in the build.gradle (Module:wear) file.
   .. code-block:: java
 
     dependencies {
-      compile 'com.google.android.support:wearable:1.2.0'
+      compile 'com.google.android.support:wearable:1.3.0'
       provided 'com.google.android.wearable:wearable:1.0.0'
 
       compile 'com.google.android.gms:play-services-wearable:8.3.0'
     }
 	
-Add WAKE_LOCK and Uses-Library to the Manifest
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Add WAKE_LOCK Permission and Uses-Library to the Manifest
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Add the WAKE_LOCK permission at the top level of the manifest. To run this app on a pre-22 APK, you set the wearable library requirement to false in the application section of the manifest.
 
