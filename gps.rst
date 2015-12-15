@@ -1,7 +1,7 @@
 Wearable GPS
 ================================
 
-By Michael Hahn, November 2015
+By Michael Hahn, December 2015
 
 Wearables are great when you are on the go, especially when you are out for a run or looking for destination. It would be great to just glance at your watch for your current location, rather than pulling out your handheld. Now that some wearables have a built-in GPS sensor, you can continue to use location-based apps even when the wearable is not paired with a handheld.
 
@@ -136,16 +136,16 @@ This example displays the current latitude and longitude in the wearable UI.
 
 Verify GPS Sensor
 -------------------
-This simple example works for all wearables, with or without a GPS sensor. Those without GPS must pair with a handheld to get location updates. A more complete implementation verifies the presence of a GPS sensor and pairing status before using location services, and warns users or reduces functionality when necessary. You can verify the presence of a GPS sensor as follows:
+This simple example works for all wearables, with or without a GPS sensor. Those without GPS must pair with a handheld to get location updates. A more complete implementation verifies the presence of a GPS sensor before using location services, and warns users or reduces functionality when necessary. You can verify the presence of GPS hardware on the wearable using the following code:
 
   .. code-block:: java
   
     getPackageManager().hasSystemFeature(PackageManager.FEATURE_LOCATION_GPS
-	
+
+Even if this returns false however, the wearable can still get GPS services from the handheld as long as it is paired and the handheld GPS option is enabled. 
 
 Example
 --------
-
 The working example for a Wearable GPS is at https://github.com/LarkspurCA/WearableGPS. It also enables the always-on feature to keep the GPS app from timing out to the watchface after a few seconds of inactivity.
 
 Golf Rangefinder Example
