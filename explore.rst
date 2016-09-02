@@ -168,6 +168,8 @@ Start a Wearable Device Debug Session
    
      adb forward tcp:4444 localabstract:/adb-hub
      adb connect localhost:4444
+
+     Note: For IPv4 hosts you can substitute 127.0.0.1 for localhost.
    
 5. The companion app changes  to the following:
 
