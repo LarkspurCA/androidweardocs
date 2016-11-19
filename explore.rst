@@ -1,7 +1,7 @@
 How Does Android Wear Work?
 ===========================
 
-By Michael Hahn, November 2015
+By Michael Hahn, September 2016
 
 The easiest way to learn how to develop Android Wear applications is to install the Android Wear companion app on your handheld device, pair with an Android watch or emulator, and try out the `Android sample projects <http://developer.android.com/samples/wearable.html>`_.
 
@@ -12,35 +12,26 @@ Set Up the Development Environment
 
 To try out Android Wear in a development environment, perform the following tasks:
 
-1. Verify that you have the Java 7 JDK installed. Run the following commands from a console:
+1. Verify that you have a current Java JDK installed by running the following commands from a console:
 
   ::
     
     java -version
-      java version "1.7.0_71"
-      Java(TM) SE Runtime Environment (build 1.7.0_71-b14)
-      Java HotSpot(TM) 64-Bit Server VM (build 24.71-b01, mixed mode)
+      java version "1.8.0_101"
+      Java(TM) SE Runtime Environment (build 1.8.0_101-b13)
+      Java HotSpot(TM) 64-Bit Server VM (build 25.101-b13, mixed mode)
     
     javac -version
-      javac 1.7.0_71
+      javac 1.8.0_10
 
-  Both commands should display version 1.7. If not, install the Oracle Java SE Development Kit.
+  Both commands should display version 1.8. If not, install the Oracle Java SE Development Kit.
   
 2. Download the `Android Studio Package <http://developer.android.com/sdk/installing/studio.html>`_ for your host and follow the installation instructions.
 
-3. Start Android Studio (*android-studio/bin/studio.sh*). If you have a previous installation, you can import settings from there. Otherwise, a wizard walks you through the setup procedure. 
+3. Start Android Studio (*android-studio/bin/studio.sh*). If you have a previous installation, you can import settings from there. Otherwise, a wizard walks you through the new installation setup procedure. 
 
-  The wizard installs the following set of Android SDKs:
   
-  * Android SDK Build-tools
-  * Android SDK Platform-tools
-  * Android SDK Tools
-  * Android Support Repository
-  * Google Repository
-  * SDK Platform Android 
-  * Sources for Android SDK
-  
-  4. For convenience, add a desktop shortcut or menu item to launch Android Studio.
+4. For convenience, add a desktop shortcut or menu item to launch Android Studio.
 
 .. _start:
 
