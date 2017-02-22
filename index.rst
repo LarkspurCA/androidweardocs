@@ -3,13 +3,11 @@ Welcome to Android Wear Docs!
 
 **What is Android Wear?**
 
-By Michael Hahn, September 2016
+By Michael Hahn, February 2017
 
-Android Wear is the Google API for smart watches, Google Glass, and other wearable devices. These wearables work in conjunction with an Android smartphone to put useful information at your fingertips. There is now a wide selection of Android watches to choose from, incuding those that provide GPS and offline music. This means you can now use the watch for common activities, like exercise or navigation, even when it is not paired with your phone.
+Android Wear 2.0 is the latest Google software for smart watches and other wearable devices. It includes a complete redesign of the user interface and significantly expands the capabilities when the watch is not paired with the phone, even normal cellphone calls. Along with the Apple smart watch, wearables have crossed the tipping point of just being a consumer plaything to an integral part of work and play.  
 
-Now that Apple has introduced their smart watch, wearables have crossed the tipping point of just being a consumer plaything to an integral part of work and play. Remember that It was just a few years ago when the smart phone was introduced, and now it is part of everyday life. 
-
-If you are a new Android Wear developer, yo need to learn how to present timely and concise information on the small screen of a wearable, and also become familiar with the software and tools that make it all possible. This site helps new developers quickly work through the basic concepts and develop their first wearable app. If you are interested in developing apps for the Apple Watch, see http://www.applewatchdocs.com.
+If you are new to Android Wear software development, you need to learn how to present timely and concise information on the small screen of a wearable, and also become familiar with the software and tools needed for applicaiton development. This site helps new developers quickly develop their first wearable app. If you are interested in developing apps for the Apple Watch, see http://www.applewatchdocs.com.
 
 Contents:
 
