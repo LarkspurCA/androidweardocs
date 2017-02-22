@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Android Wear Docs'
-copyright = u'2015, Michael Hahn'
+copyright = u'2017, Michael Hahn'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
