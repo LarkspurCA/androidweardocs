@@ -9,9 +9,9 @@ You create a new wearable project using the Android Studio new project wizard.
 
 2. Select **Start a New Android Studio Project** in the Welcome screen.
 
-3. In the new project dialog, enter your Application Name, Domain, and a project directory. Click **Next**.
+3. In the new project dialog, enter your Application Name, Company Domain, and a project Location. Click **Next**.
 
-4. In the Target Devices dialog, select **Phone and Tablet** and **Wear** form factors. Accept the latest SDK as the **Minimum SDK** for both.
+4. In the Target Android Devices dialog, select **Phone and Tablet** and **Wear** form factors. Accept the latest SDK as the **Minimum SDK** for both.
  
 5. In the Add an Activity to Mobile dialog, select **Empty Activity**. Click **Next**.
 
