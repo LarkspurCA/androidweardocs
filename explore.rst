@@ -1,7 +1,7 @@
 How Does Android Wear Work?
 ===========================
 
-By Michael Hahn, September 2016
+By Michael Hahn, July 2017
 
 The easiest way to learn how to develop Android Wear applications is to install the Android Wear companion app on your handheld device, pair with an Android watch or emulator, and try out the `Android sample projects <http://developer.android.com/samples/wearable.html>`_.
 
@@ -84,28 +84,32 @@ You can try the sample apps using either an Android device or emulator. A wearab
 Android Emulator Setup
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Start the Android AVD Manager.
+1. Start the Android AVD Manager. In Android Studio, select **Tools > Android > AVD manager**.
 
-  ::
+2. Click **Create Virtual Device** to define a new Android Wear emulator.
 
-     android avd
-	 
-  Note: The adb executable is located in the Tools directory of your Android SDK. Add it to your path if necessary.
-  
-2. Click **Create** to define a new Android Wear emulator.
+3. Select **Wear** in the **Category** pane and then choose a hardware profile. Click **Next**.
 
-    .. figure:: images/android-wear-square-vm.png
-      :scale: 50 %
+4. Select a system image. For example choose Nougat API Level 25 for an Android Wear 2 wearable. If necessary, click **Download** and wait for the download to complete. 
 
-      Make sure to check the Keyboard option. You might need it later.
+5. Click **Next**. The Verify Configuration dialog is displayed. 
 
-3. Click **OK** to save your changes.
+6.  Scroll down and click **Show Advanced Settings** and select **Enable Keyboard Input.
 
-4. Click **Start** to launch the the emulator.
+7. Verify the configuration for the new Wearable emulator and click Finish.
 
-    Initially the emulator screen shows the time and two icons on a cloud background.
+8. Click OK to save your changes.
 
-    .. figure:: images/android-wear-square-blank.png
+9. Click the start icon of your new emulator to launch it.
+
+   An Android Wear Version 1 emulator initially displays the time with two icons on a cloud background.
+
+    .. figure:: images/android-wear1-round.png
+      :scale: 35 %
+
+    A Version 2 emulator shows the a new watch face with the time surrounded by the charge level, date, upcoming events, or other Tourbillon.
+   
+    .. figure:: images/android-wear2-round.png
       :scale: 35 %
 
 Start an Emulator Debug Session
@@ -118,7 +122,9 @@ Start an Emulator Debug Session
     adb -d forward tcp:5601 tcp:5601
 
 
-2. In the Android Wear companion app, choose **Pair with emulator**.
+2. In the Android Wear companion app on the handheld, select **Add a new watch** from the dropdown menu on the left.
+
+3. In the window that opens, choose **Pair with emulator** from the dropdown menu.
 
   When the Android Wear companion app successfully pairs with the emulator, the action bar displays Emulator Connected.
 
