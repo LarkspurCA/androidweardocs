@@ -3,7 +3,8 @@
 Create an Android Studio Project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You create a new wearable project using the Android Studio new project wizard. 
+You create a new wearable project using the Android Studio new project wizard. This procedure describes an project that implements both a handheld and wearable app. Android Wear 2.0 watches (OS 7.1 or later) do not require a paired handheld app. However, the example code in some sections of this guide do utilize a handheld device.
+
 
 1. Launch Android Studio.
 
@@ -11,12 +12,14 @@ You create a new wearable project using the Android Studio new project wizard.
 
 3. In the new project dialog, enter your Application Name, Company Domain, and a project Location. Click **Next**.
 
-4. In the Target Android Devices dialog, select **Phone and Tablet** and **Wear** form factors. Accept the latest SDK as the **Minimum SDK** for both. Click **Next**.
+4. In the Target Android Devices dialog, select **Wear** and **Phone and Tablet**. 
+
+5. Accept the default **Minimum SDK** values and Click **Next**. 
  
-5. In the Add an Activity to Mobile dialog, select **Empty Activity**. Click **Next**.
+6. In the Add an Activity to Mobile dialog, select **Empty Activity**. Click **Next**.
 
 6. In the Customize Activity dialog enter an Activity Name for the handheld. The example code uses the name **HandheldActivity**.  Accept default values for the other fields and click **Next**.
 
-7. In the Add an Activity to Wear dialog, select **Blank Wear Activity**. Then click **Next**.
+7. In the Add an Activity to Wear dialog, select **Always On Wear Activity**. Then click **Next**.
 
-8.  In the Customize Activity dialog enter an Activity Name for the wearable. The example code uses the name **WearActivity**. Accept default values for the other fields and click **Finish**.
+8. In the Customize Activity dialog enter an Activity Name for the wearable. The example code uses the name **WearActivity**. Accept default values for the other fields and click **Finish**.
