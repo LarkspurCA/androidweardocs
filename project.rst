@@ -18,8 +18,8 @@ You create a new wearable project using the Android Studio new project wizard. T
  
 6. In the Add an Activity to Mobile dialog, select **Empty Activity**. Click **Next**.
 
-6. In the Customize Activity dialog enter an Activity Name for the handheld. The example code uses the name **HandheldActivity**.  Accept default values for the other fields and click **Next**.
+7. In the Customize Activity dialog enter an Activity Name for the handheld. The example code uses the name **HandheldActivity**.  Accept default values for the other fields and click **Next**.
 
-7. In the Add an Activity to Wear dialog, select **Always On Wear Activity**. Then click **Next**.
+8. In the Add an Activity to Wear dialog, select **Always On Wear Activity**. Then click **Next**.
 
-8. In the Customize Activity dialog enter an Activity Name for the wearable. The example code uses the name **WearActivity**. Accept default values for the other fields and click **Finish**.
+9. In the Customize Activity dialog enter an Activity Name for the wearable. The example code uses the name **WearActivity**. Accept default values for the other fields and click **Finish**.
