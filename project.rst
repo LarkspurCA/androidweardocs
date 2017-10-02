@@ -23,3 +23,14 @@ You create a new wearable project using the Android Studio new project wizard. T
 8. In the Add an Activity to Wear dialog, select **Always On Wear Activity**. Then click **Next**.
 
 9. In the Customize Activity dialog enter an Activity Name for the wearable. The example code uses the name **WearActivity**. Accept default values for the other fields and click **Finish**.
+
+Android creates and compiles a new project. Sometimes there are compile errors related to missing packages. If so, verify that the project build.gradle script correctly references the maven url.
+
+  .. code-block:: java
+
+    allprojects {
+      repositories {
+        jcenter()
+        maven { url 'https://maven.google.com' }
+      }
+    }
