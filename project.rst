@@ -24,7 +24,12 @@ You create a new wearable project using the Android Studio new project wizard. T
 
 9. In the Customize Activity dialog enter an Activity Name for the wearable. The example code uses the name **WearActivity**. Accept default values for the other fields and click **Finish**.
 
-Android creates and compiles a new project. Sometimes there are compile errors related to missing packages. If so, verify that the project build.gradle script correctly references the maven url.
+Android Studio creates and compiles the new project.
+
+Verify the New Project Settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Verify that the build.gradle(project) script correctly references the maven url.
 
   .. code-block:: java
 
@@ -34,3 +39,23 @@ Android creates and compiles a new project. Sometimes there are compile errors r
         maven { url 'https://maven.google.com' }
       }
     }
+
+2. Verify that the build.gradle(wear) script has the following dependencies.
+
+  .. code-block:: java
+
+    compile 'com.android.support:wear:26.0.0'
+    compile 'com.google.android.support:wearable:2.0.5'
+    provided 'com.google.android.wearable:wearable:2.0.5'
+    
+3. For stand-alone Android Wear 2 apps, add the following meta-data to the <Application> section of the wear manifest file.
+
+  .. code-block:: java
+
+     <application>
+     ...
+       <meta-data
+        android:name="com.google.android.wearable.standalone"
+        android:value="true" />
+     ...
+	</application>
