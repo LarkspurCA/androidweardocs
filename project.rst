@@ -31,7 +31,7 @@ Verify the New Project Settings
 
 1. Verify that the build.gradle(project) script correctly references the maven url.
 
-  .. code-block:: java
+  .. code-block:: html
 
     allprojects {
       repositories {
@@ -40,22 +40,27 @@ Verify the New Project Settings
       }
     }
 
-2. Verify that the build.gradle(wear) script has the following dependencies.
+2. Verify that the build.gradle(wear) script has the following dependencies. Use later versions, as needed.
 
-  .. code-block:: java
+  .. code-block:: html
+
+    compile 'com.google.android.support:wearable:2.0.5'
+    compile 'com.google.android.gms:play-services-wearable:11.0.4'
+    provided 'com.google.android.wearable:wearable:2.0.5'
 
     compile 'com.android.support:wear:26.0.0'
-    compile 'com.google.android.support:wearable:2.0.5'
-    provided 'com.google.android.wearable:wearable:2.0.5'
+
+      Note: This last dependency provides the most current wearable packages.
+
     
 3. For stand-alone Android Wear 2 apps, add the following meta-data to the <Application> section of the wear manifest file.
 
-  .. code-block:: java
+  .. code-block:: html
 
      <application>
-     ...
+       ...
        <meta-data
         android:name="com.google.android.wearable.standalone"
         android:value="true" />
-     ...
-	</application>
+       ...
+    </application>
