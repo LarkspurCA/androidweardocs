@@ -1,9 +1,9 @@
 How Does Android Wear Work?
 ===========================
 
-By Michael Hahn, July 2017
+By Michael Hahn, August 2018
 
-The easiest way to learn how to develop Android Wear applications is to install the Android Wear companion app on your handheld device, pair with an Android watch or emulator, and try out the `Android sample projects <http://developer.android.com/samples/wearable.html>`_.
+The easiest way to learn how to develop Android Wear applications is to install the Wear OS by Google Smartwatch on your handheld device, pair with an Android watch or emulator, and try out the `Android sample projects <http://developer.android.com/samples/wearable.html>`_.
 
 .. _setup:
 
@@ -38,20 +38,20 @@ To try out Android Wear in a development environment, perform the following task
 Set Up Your Handheld Device
 ------------------------------
 
-1. Launch Google Play and Install the Android Wear companion app on your handheld device. 
+1. Launch Google Play and Install the 'Wear OS by Google Smartwatch' app on your handheld device. 
 
   .. figure:: images/apps.png
     :scale: 25 %
 	
 
-2.  Start the Android Wear companion app. 
+2.  Start the Wear OS app. 
 
     The first time you launch the app, an onscreen message reminds you that Android Wear is not a notification listener.  Follow the onscreen instructions.
 
 
-3. Enable USB debugging on your handheld device.
+3. Enable USB debugging on your handheld device. Open Settings, Developer Options, USB Debugging, enable.
 
-  Your handheld device disables USB debugging by default, and the option to enable it can be hidden as well. For Samsung Galaxy, you must open Options, select About Phone, and then click Build Number seven times. This adds Developer Options to the Options menu, where you can enable USB debugging.
+  Your handheld device disables USB debugging by default, and the option to enable it can be hidden as well. For Samsung Galaxy, you must open Options, select About Phone,, Software Information and then click Build Number seven times. This adds Developer Options to the Options menu, so you can enable USB debugging.
 
 4. Connect your handheld device to the computer with a USB cable. 
 
@@ -122,11 +122,11 @@ Start an Emulator Debug Session
     adb -d forward tcp:5601 tcp:5601
 
 
-2. In the Android Wear companion app on the handheld, select **Add a new watch** from the dropdown menu on the left.
+2. In the Wear OS on the handheld, select **Add a new watch** from the dropdown menu on the left.
 
 3. In the window that opens, choose **Pair with emulator** from the dropdown menu.
 
-  When the Android Wear companion app successfully pairs with the emulator, the action bar displays Emulator Connected.
+  When the Wear OS successfully pairs with the emulator, the action bar displays Emulator Connected.
 
   .. figure:: images/open.png
     :scale: 25 %
@@ -136,11 +136,11 @@ Start an Emulator Debug Session
 Wearable Device Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Pair a wearable device with your handheld using the Android Wear companion app. 
+1. Pair a wearable device with your handheld using the Wear OS. 
 
-   When you first pear with your wearable, the Android Wear companion app provides a short tutorial that introduces the Wearable UI and basic functionality. From the main UI where you can then change the watchface, enable voice actions, and browse suggested apps.
+   When you first pear with your wearable, the Wear OS provides a short tutorial that introduces the Wearable UI and basic functionality. From the main UI where you can then change the watchface, enable voice actions, and browse suggested apps.
   
-2. Enable bluetooth debugging on the wearable. 
+2. Enable bluetooth debugging on the wearable. Select Settings, Developer, ADB Debugging and Debug over bluetooth.
   
    Your wearable device disables USB debugging by default, and the option to enable it can be hidden as well. You must open Settings, select About, and then click Build Number seven times. The Settings menu then includes Developer options, where you can enable debugging over bluetooth.  
    
@@ -148,9 +148,9 @@ Start a Wearable Device Debug Session
 **************************************
 
 
-1. On the handheld, open the Android Wear companion app.
+1. On the handheld, open the Wear OS.
 
-2. Tap the Settings icon. The Settings dialog is displayed.
+2. Scroll down to Settings and select Advanced Settings. The Settings dialog is displayed. Enable Debugging Over Bluetooth.
 
 3. Enable Debugging over Bluetooth. The following is displayed initially:
 
@@ -168,7 +168,7 @@ Start a Wearable Device Debug Session
 
      Note: For IPv4 hosts you can substitute 127.0.0.1 for localhost.
    
-5. The companion app changes  to the following:
+5. The Debugging Over Bluetooth setting changes  to the following:
 
    ::
    
